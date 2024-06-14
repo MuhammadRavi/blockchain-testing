@@ -6,7 +6,7 @@
 version: '2'
 
 volumes:
-  ordererSL.example.com:
+  ordererSl.example.com:
   peer0.org2.sl.com:
 
 networks:
