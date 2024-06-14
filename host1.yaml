@@ -16,6 +16,7 @@ networks:
       name: insw_network
 
 services:
+
   orderer.example.com:
     extends:
       file:   base/docker-compose-base.yaml
@@ -56,6 +57,8 @@ services:
     stdin_open: true
     environment:
       - SYS_CHANNEL=$SYS_CHANNEL
+      - CHANNEL_NAME=$CHANNEL_NAME
+      - CHANNEL_ID=$CHANNEL_NAME
       - GOPATH=/opt/gopath
       - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
       #- FABRIC_LOGGING_SPEC=DEBUG
