@@ -6,38 +6,37 @@
 version: '2'
 
 volumes:
-  orderer2.example.com:
-  peer1.org1.example.com:
+  ordererSL.example.com:
+  peer0.org2.sl.com:
 
 networks:
   byfn:
     external:
-      name: first-network
+      name: insw_network
 
 services:
-
-  orderer2.example.com:
+  ordererSl.example.com:
     extends:
       file: base/peer-base.yaml
       service: orderer-base
     environment:
-      - ORDERER_GENERAL_LISTENPORT=8050
-    container_name: orderer2.example.com
+      - ORDERER_GENERAL_LISTENPORT=9050
+    container_name: ordererSl.example.com
     networks:
     - byfn
     volumes:
         - ./channel-artifacts/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
-        - ./crypto-config/ordererOrganizations/example.com/orderers/orderer2.example.com/msp:/var/hyperledger/orderer/msp
-        - ./crypto-config/ordererOrganizations/example.com/orderers/orderer2.example.com/tls/:/var/hyperledger/orderer/tls
-        - orderer2.example.com:/var/hyperledger/production/orderer
+        - ./crypto-config/ordererOrganizations/example.com/orderers/ordererSl.example.com/msp:/var/hyperledger/orderer/msp
+        - ./crypto-config/ordererOrganizations/example.com/orderers/ordererSl.example.com/tls/:/var/hyperledger/orderer/tls
+        - ordererSl.example.com:/var/hyperledger/production/orderer
     ports:
-    - 8050:8050
+    - 9050:9050
 
-  peer1.org1.example.com:
-    container_name: peer1.org1.example.com
+  peer0.org2.sl.com:
+    container_name: peer0.org2.sl.com
     extends:
       file:  base/docker-compose-base.yaml
-      service: peer1.org1.example.com
+      service: peer0.org2.sl.com
     networks:
       - byfn
 
