@@ -41,7 +41,6 @@ services:
         - peer0.org1.co.com:/var/hyperledger/production
     ports:
       - 8051:8051
-      - 8052:8052
 
   peer0.org2.sl.com:
     container_name: peer0.org2.sl.com
@@ -64,5 +63,4 @@ services:
         - peer0.org2.sl.com:/var/hyperledger/production
     ports:
       - 9051:9051
-      - 9052:9052
 
