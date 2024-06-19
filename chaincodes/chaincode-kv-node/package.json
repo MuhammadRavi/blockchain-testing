@@ -1,4 +1,15 @@
 {
+  "name": "chaincode-kv-node",
+  "version": "5.0.0",
+  "description": "Chaincode INSW v5",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "engine-strict": true,
+  "engineStrict": true,
+  "author": "BRAIN IPB",
+  "license": "ISC",
   "dependencies": {
     "crypto": "^1.0.1",
     "fabric-contract-api": "^2.5.6"
