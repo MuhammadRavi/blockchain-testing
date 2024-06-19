@@ -8,6 +8,7 @@ version: '2'
 volumes:
   orderer.example.com:
   peer0.org1.co.com:
+  ordererCo.example.com:
 
 networks:
   insw_network:
@@ -21,6 +22,23 @@ services:
     container_name: orderer.example.com
     networks:
       - insw_network
+
+  ordererCo.example.com:
+    extends:
+      file: base/peer-base.yaml
+      service: orderer-base
+    environment:
+      - ORDERER_GENERAL_LISTENPORT=8050
+    container_name: ordererCo.example.com
+    networks:
+      - insw_network
+    volumes:
+      - ./channel-artifacts/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
+      - ./crypto-config/ordererOrganizations/example.com/orderers/ordererCo.example.com/msp:/var/hyperledger/orderer/msp
+      - ./crypto-config/ordererOrganizations/example.com/orderers/ordererCo.example.com/tls/:/var/hyperledger/orderer/tls
+      - ordererCo.example.com:/var/hyperledger/production/orderer
+    ports:
+      - 8050:8050
 
   peer0.org1.co.com:
     container_name: peer0.org1.co.com

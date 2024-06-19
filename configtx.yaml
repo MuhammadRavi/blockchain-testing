@@ -130,7 +130,18 @@ Orderer: &OrdererDefaults
         Port: 7050
         ClientTLSCert: crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/tls/server.crt
         ServerTLSCert: crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/tls/server.crt
-
+      - Host: orderer.co.com
+        Port: 8050
+        ClientTLSCert: crypto-config/ordererOrganizations/example.com/orderers/ordererCo.example.com/tls/server.crt
+        ServerTLSCert: crypto-config/ordererOrganizations/example.com/orderers/ordererCo.example.com/tls/server.crt
+      - Host: orderer.example.com
+        Port: 9050
+        ClientTLSCert: crypto-config/ordererOrganizations/example.com/orderers/ordererSl.example.com/tls/server.crt
+        ServerTLSCert: crypto-config/ordererOrganizations/example.com/orderers/ordererSl.example.com/tls/server.crt
+  Addresses:
+      - orderer.example.com:7050
+      - ordererCo.example.com:8050
+      - ordererSl.example.com:9050
 Profiles:
   OrdererGenesis:
     <<: *ChannelDefaults
