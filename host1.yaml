@@ -20,7 +20,7 @@ services:
       service: orderer.example.com
     container_name: orderer.example.com
     networks:
-      - insw_net
+      - insw_network
 
   peer0.org1.co.com:
     container_name: peer0.org1.co.com
