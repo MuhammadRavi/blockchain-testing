@@ -6,37 +6,18 @@
 version: '2'
 
 volumes:
-  ordererSl.example.com:
   peer0.org2.sl.com:
 
 networks:
-  byfn:
-    external:
-      name: insw_network
+  insw_network:
+    external: true
 
 services:
-  ordererSl.example.com:
-    extends:
-      file: base/peer-base.yaml
-      service: orderer-base
-    environment:
-      - ORDERER_GENERAL_LISTENPORT=9050
-    container_name: ordererSl.example.com
-    networks:
-    - byfn
-    volumes:
-        - ./channel-artifacts/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
-        - ./crypto-config/ordererOrganizations/example.com/orderers/ordererSl.example.com/msp:/var/hyperledger/orderer/msp
-        - ./crypto-config/ordererOrganizations/example.com/orderers/ordererSl.example.com/tls/:/var/hyperledger/orderer/tls
-        - ordererSl.example.com:/var/hyperledger/production/orderer
-    ports:
-    - 9050:9050
-
   peer0.org2.sl.com:
     container_name: peer0.org2.sl.com
     extends:
       file:  base/docker-compose-base.yaml
       service: peer0.org2.sl.com
     networks:
-      - byfn
+      - insw_network
 

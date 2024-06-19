@@ -7,40 +7,20 @@ version: '2'
 
 volumes:
   orderer.example.com:
-  ordererCo.example.com:
   peer0.org1.co.com:
 
 networks:
-  byfn:
-    external:
-      name: insw_network
+  insw_network:
+    external: true
 
 services:
-
   orderer.example.com:
     extends:
       file:   base/docker-compose-base.yaml
       service: orderer.example.com
     container_name: orderer.example.com
     networks:
-      - byfn
-
-  ordererCo.example.com:
-    extends:
-      file: base/peer-base.yaml
-      service: orderer-base
-    environment:
-      - ORDERER_GENERAL_LISTENPORT=8050
-    container_name: ordererCo.example.com
-    networks:
-    - byfn
-    volumes:
-        - ./channel-artifacts/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
-        - ./crypto-config/ordererOrganizations/example.com/orderers/ordererCo.example.com/msp:/var/hyperledger/orderer/msp
-        - ./crypto-config/ordererOrganizations/example.com/orderers/ordererCo.example.com/tls/:/var/hyperledger/orderer/tls
-        - ordererCo.example.com:/var/hyperledger/production/orderer
-    ports:
-    - 8050:8050
+      - insw_net
 
   peer0.org1.co.com:
     container_name: peer0.org1.co.com
@@ -48,7 +28,7 @@ services:
       file:  base/docker-compose-base.yaml
       service: peer0.org1.co.com
     networks:
-      - byfn
+      - insw_network
 
   cli:
     container_name: cli
@@ -81,5 +61,5 @@ services:
       - orderer.example.com
       - peer0.org1.co.com
     networks:
-      - byfn
+      - insw_network
 
