@@ -1,3 +1,25 @@
+Capabilities:
+  Channel: &ChannelCapabilities
+    V2_0: true
+  Orderer: &OrdererCapabilities
+    V2_0: true
+  Application: &ApplicationCapabilities
+    V2_0: true
+
+Channel: &ChannelDefaults
+  Policies:
+    Readers:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+    Writers:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    Admins:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Admins"
+  Capabilities:
+    <<: *ChannelCapabilities
+
 Organizations:
   - &OrdererOrg
     Name: OrdererMSP
@@ -31,6 +53,9 @@ Organizations:
       Admins:
         Type: Signature
         Rule: "OR('Org1MSP.admin')"
+      Endorsement:
+        Type: Signature
+        Rule: "OR('Org1MSP.member')"
     AnchorPeers:
       - Host: peer0.org1.co.com
         Port: 7051
@@ -49,17 +74,12 @@ Organizations:
       Admins:
         Type: Signature
         Rule: "OR('Org2MSP.admin')"
+      Endorsement:
+        Type: Signature
+        Rule: "OR('Org2MSP.member')"
     AnchorPeers:
       - Host: peer0.org2.sl.com
         Port: 8051
-
-Capabilities:
-  Channel: &ChannelCapabilities
-    V2_0: true
-  Orderer: &OrdererCapabilities
-    V2_0: true
-  Application: &ApplicationCapabilities
-    V2_0: true
 
 Application: &ApplicationDefaults
   Organizations:
@@ -73,6 +93,9 @@ Application: &ApplicationDefaults
     Admins:
       Type: ImplicitMeta
       Rule: "MAJORITY Admins"
+    Endorsement:
+        Type: ImplicitMeta
+        Rule: "MAJORITY Endorsement"
   Capabilities:
     <<: *ApplicationCapabilities
 
@@ -107,20 +130,6 @@ Orderer: &OrdererDefaults
         Port: 7050
         ClientTLSCert: crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/tls/server.crt
         ServerTLSCert: crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/tls/server.crt
-
-Channel: &ChannelDefaults
-  Policies:
-    Readers:
-      Type: ImplicitMeta
-      Rule: "ANY Readers"
-    Writers:
-      Type: ImplicitMeta
-      Rule: "ANY Writers"
-    Admins:
-      Type: ImplicitMeta
-      Rule: "MAJORITY Admins"
-  Capabilities:
-    <<: *ChannelCapabilities
 
 Profiles:
   OrdererGenesis:
