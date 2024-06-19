@@ -130,11 +130,11 @@ Orderer: &OrdererDefaults
         Port: 7050
         ClientTLSCert: crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/tls/server.crt
         ServerTLSCert: crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/tls/server.crt
-      - Host: orderer.co.com
+      - Host: ordererCo.example.com
         Port: 8050
         ClientTLSCert: crypto-config/ordererOrganizations/example.com/orderers/ordererCo.example.com/tls/server.crt
         ServerTLSCert: crypto-config/ordererOrganizations/example.com/orderers/ordererCo.example.com/tls/server.crt
-      - Host: orderer.example.com
+      - Host: ordererSl.example.com
         Port: 9050
         ClientTLSCert: crypto-config/ordererOrganizations/example.com/orderers/ordererSl.example.com/tls/server.crt
         ServerTLSCert: crypto-config/ordererOrganizations/example.com/orderers/ordererSl.example.com/tls/server.crt
