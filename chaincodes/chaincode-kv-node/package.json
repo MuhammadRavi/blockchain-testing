@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "crypto": "^1.0.1",
+    "fabric-contract-api": "^2.5.6"
+  }
+}
