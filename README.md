@@ -9,7 +9,7 @@ sudo npm install -g npm@10.8.1
 mkdir chaincodes/chaincode-kv-node
 cd chaincodes/chaincode-kv-node
 touch index.js
-npm install fabric-contract-api crypto
+npm install fabric-contract-api crypto fabric-shim
 cd ../..
 ### Zip chaincodes
 peer lifecycle chaincode package ./channel-artifacts/chaincodes.tar.gz --path /chaincodes/chaincode-kv-node --lang node --label chaincodesv5
