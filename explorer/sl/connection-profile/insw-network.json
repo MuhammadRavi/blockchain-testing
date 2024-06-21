@@ -1,0 +1,50 @@
+{
+    "name": "insw-network",
+    "version": "1.0.0",
+    "client": {
+        "tlsEnable": true,
+        "adminCredential": {
+            "id": "admin",
+            "password": "adminpw"
+        },
+        "enableAuthentication": true,
+        "organization": "Org2MSP",
+        "connection": {
+            "timeout": {
+                "peer": {
+                    "endorser": "300"
+                },
+                "orderer": "300"
+            }
+        }
+    },
+    "channels": {
+        "dochannel": {
+            "peers": {
+                "peer0.org2.sl.com": {}
+            }
+        }
+    },
+    "organizations": {
+        "Org2MSP": {
+            "mspid": "Org2MSP",
+            "adminPrivateKey": {
+                "path": "/tmp/crypto/peerOrganizations/org2.sl.com/users/Admin@org2.sl.com/msp/keystore/priv_sk"
+            },
+            "peers": [
+                "peer0.org2.sl.com"
+            ],
+            "signedCert": {
+                "path": "/tmp/crypto/peerOrganizations/org2.sl.com/users/Admin@org2.sl.com/msp/signcerts/Admin@org2.sl.com-cert.pem"
+            }
+        }
+    },
+    "peers": {
+        "peer0.org2.sl.com": {
+            "tlsCACerts": {
+                "path": "/tmp/crypto/peerOrganizations/org2.sl.com/peers/peer0.org2.sl.com/tls/ca.crt"
+            },
+            "url": "grpcs://peer0.org2.sl.com:9051"
+        }
+    }
+}
