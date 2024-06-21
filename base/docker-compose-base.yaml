@@ -5,8 +5,11 @@
 
 version: '2'
 
-services:
+volumes:
+  pgdata:
+  walletstore:
 
+services:
   orderer.example.com:
     container_name: orderer.example.com
     extends:

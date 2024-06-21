@@ -9,6 +9,8 @@ volumes:
   orderer.example.com:
   peer0.org1.co.com:
   ordererCo.example.com:
+  pgdata:
+  walletstore:
 
 networks:
   insw_network:
