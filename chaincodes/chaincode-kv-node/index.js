@@ -6,6 +6,16 @@ class DOContract extends Contract {
         super("DOContract");
     }
 
+    getTimestamp(timestamp) {
+        const seconds = timestamp.seconds.low;
+        const nanos = timestamp.nanos;
+
+        const milliseconds = seconds * 1000 + nanos / 1000000;
+        const date = new Date(milliseconds);
+
+        return date.toISOString();  // or another format you prefer
+    }
+
     async instantiate() {
         // function that will be invoked on chaincode instantiation
     }
@@ -13,7 +23,8 @@ class DOContract extends Contract {
     async requestDO(ctx, deliveryOrderData) {
         const orderData = JSON.parse(deliveryOrderData);
         const orderId = crypto.createHash('sha256').update(deliveryOrderData).digest('hex');
-        orderData.statusDate = String(ctx.stub.getTxTimestamp());
+
+        orderData.statusDate = this.getTimestamp(ctx.stub.getTxTimestamp());
         orderData.status = "Submitted";
         orderData.orderId = orderId;
         await ctx.stub.putState(orderId, Buffer.from(JSON.stringify(orderData)));
@@ -38,7 +49,7 @@ class DOContract extends Contract {
         // console.log(orderData) // jadi format json
         orderData.status = status;
         orderData.note = note;
-        orderData.statusDate = String(new Date());
+        orderData.statusDate = this.getTimestamp(ctx.stub.getTxTimestamp());
         await ctx.stub.putState(orderId, Buffer.from(JSON.stringify(orderData)));
         return { success: "OK", status: orderData.status, datetime: orderData.statusDate }
     }
@@ -47,6 +58,7 @@ class DOContract extends Contract {
         const buffer = await ctx.stub.getState(orderId);
         if (!buffer || !buffer.length) return { error: "NOT_FOUND" };
         const orderData = JSON.parse(updatedDeliveryOrderData);
+        orderData.statusDate = this.getTimestamp(ctx.stub.getTxTimestamp());
         await ctx.stub.putState(orderId, Buffer.from(JSON.stringify(orderData)));
         return { success: "OK", status: orderData.status, datetime: orderData.statusDate };
     }
@@ -56,7 +68,7 @@ class DOContract extends Contract {
         if (!buffer || !buffer.length) return { error: "NOT_FOUND" };
         const orderData = JSON.parse(buffer.toString());
         orderData.status = "Released";
-        orderData.statusDate = String(new Date())
+        orderData.statusDate = this.getTimestamp(ctx.stub.getTxTimestamp());
         await ctx.stub.putState(orderId, Buffer.from(JSON.stringify(orderData)));
         return { success: "OK", status: orderData.status, datetime: orderData.statusDate };
     }
@@ -66,7 +78,7 @@ class DOContract extends Contract {
         if (!buffer || !buffer.length) return { error: "NOT_FOUND" };
         const orderData = JSON.parse(buffer.toString());
         orderData.status = "Rejected";
-        orderData.statusDate = String(new Date());
+        orderData.statusDate = this.getTimestamp(ctx.stub.getTxTimestamp());
         await ctx.stub.putState(orderId, Buffer.from(JSON.stringify(orderData)));
         return { success: "OK", status: orderData.status, datetime: orderData.statusDate };
     }
@@ -122,7 +134,6 @@ class DOContract extends Contract {
         const startKey = '';
         const endKey = '';
         let filterResults = [];
-        const listSLCode = JSON.parse(listKodeSL)
         for await (const { key, value } of ctx.stub.getStateByRange(startKey, endKey)) {
             const strValue = Buffer.from(value).toString('utf8');
             let record = JSON.parse(strValue);
