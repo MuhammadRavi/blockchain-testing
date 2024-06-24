@@ -41,16 +41,22 @@ docker exec cli peer lifecycle chaincode commit -o orderer.example.com:7050 --tl
 docker exec cli peer lifecycle chaincode querycommitted --channelID dochannel --name chaincodes
 
 ### testing chaincode
-
+#### Request DO
 docker exec cli peer chaincode invoke -o ordererCo.example.com:8050 --tls true --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/ordererCo.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C dochannel -n chaincodes --peerAddresses peer0.org1.co.com:8051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.co.com/peers/peer0.org1.co.com/tls/ca.crt --peerAddresses peer0.org2.sl.com:9051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org2.sl.com/peers/peer0.org2.sl.com/tls/ca.crt -c '{"Args": ["DOContract:requestDO", "{\"assetID\":\"asset1\",\"newValue\":\"100\"}"]}'
 
 docker exec cli peer chaincode invoke -o ordererSl.example.com:9050 --tls true --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/ordererSl.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C dochannel -n chaincodes --peerAddresses peer0.org1.co.com:8051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.co.com/peers/peer0.org1.co.com/tls/ca.crt --peerAddresses peer0.org2.sl.com:9051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org2.sl.com/peers/peer0.org2.sl.com/tls/ca.crt -c '{"Args": ["DOContract:requestDO", "{\"assetID\":\"asset2\",\"newValue\":\"100\"}"]}'
 
+#### Query All DO
 docker exec cli peer chaincode query -n chaincodes -C dochannel -c '{"Args": ["DOContract:queryAllOrders", "{}"]}'
-
-docker exec -e CORE_PEER_ADDRESS=peer0.org1.co.com:8051 -e CORE_PEER_TLS_ROOTCERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.co.com/peers/peer0.org1.co.com/tls/ca.crt cli peer chaincode query -n chaincodes -C dochannel -c '{"Args": ["DOContract:queryAllOrders", "{}"]}'
-
-docker exec -e CORE_PEER_ADDRESS=peer0.org2.sl.com:9051 -e CORE_PEER_TLS_ROOTCERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org2.sl.com/peers/peer0.org2.sl.com/tls/ca.crt cli peer chaincode query -n chaincodes -C dochannel -c '{"Args": ["DOContract:queryAllOrders", "{}"]}'
+#### Get Status DO
+docker exec cli peer chaincode query -n chaincodes -C dochannel -c '{"Args": ["DOContract:getStatusDO", "ebb99c74f2664b015bed614ef5863b29450afed0201
+f7d55aebe61e8e1f6e962"]}'
+#### update status DO
+docker exec cli peer chaincode invoke -o ordererCo.example.com:8050 --tls true --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/ordererCo.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C dochannel -n chaincodes --peerAddresses peer0.org1.co.com:8051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.co.com/peers/peer0.org1.co.com/tls/ca.crt --peerAddresses peer0.org2.sl.com:9051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org2.sl.com/peers/peer0.org2.sl.com/tls/ca.crt -c '{"Args": ["DOContract:updateStatusDO", "ebb99c74f2664b015bed614ef5863b29450afed0201
+f7d55aebe61e8e1f6e962", "Cancelled", "hahaha"]}'
+#### update do
+docker exec cli peer chaincode invoke -o ordererCo.example.com:8050 --tls true --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/ordererCo.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C dochannel -n chaincodes --peerAddresses peer0.org1.co.com:8051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.co.com/peers/peer0.org1.co.com/tls/ca.crt --peerAddresses peer0.org2.sl.com:9051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org2.sl.com/peers/peer0.org2.sl.com/tls/ca.crt -c '{"Args": ["DOContract:updateStatusDO", "ebb99c74f2664b015bed614ef5863b29450afed0201
+f7d55aebe61e8e1f6e962", "Cancelled", "hahaha"]}'
 
 ## Instalasi Hyperledger Explorer
 ### Konfigurasi folder explorer mengikuti environment host berada
