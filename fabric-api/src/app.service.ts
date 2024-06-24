@@ -177,6 +177,4 @@ export class AppService {
       throw new BadRequestException('Failed to query all DO SL', error.message)
     }
   }
-
-  
 }
