@@ -8,7 +8,7 @@
             "password": "adminpw"
         },
         "enableAuthentication": true,
-        "organization": "Org1MSP",
+        "organization": "Org2MSP",
         "connection": {
             "timeout": {
                 "peer": {
@@ -21,30 +21,30 @@
     "channels": {
         "dochannel": {
             "peers": {
-                "peer0.org1.co.com": {}
+                "peer0.org2.co.com": {}
             }
         }
     },
     "organizations": {
-        "Org1MSP": {
-            "mspid": "Org1MSP",
+        "Org2MSP": {
+            "mspid": "Org2MSP",
             "adminPrivateKey": {
-                "path": "/tmp/crypto/peerOrganizations/org1.co.com/users/Admin@org1.co.com/msp/keystore/priv_sk"
+                "path": "/tmp/crypto/peerOrganizations/org2.co.com/users/Admin@org2.co.com/msp/keystore/priv_sk"
             },
             "peers": [
-                "peer0.org1.co.com"
+                "peer0.org2.co.com"
             ],
             "signedCert": {
-                "path": "/tmp/crypto/peerOrganizations/org1.co.com/users/Admin@org1.co.com/msp/signcerts/Admin@org1.co.com-cert.pem"
+                "path": "/tmp/crypto/peerOrganizations/org2.co.com/users/Admin@org2.co.com/msp/signcerts/Admin@org2.co.com-cert.pem"
             }
         }
     },
     "peers": {
-        "peer0.org1.co.com": {
+        "peer0.org2.co.com": {
             "tlsCACerts": {
-                "path": "/tmp/crypto/peerOrganizations/org1.co.com/peers/peer0.org1.co.com/tls/ca.crt"
+                "path": "/tmp/crypto/peerOrganizations/org2.co.com/peers/peer0.org2.co.com/tls/ca.crt"
             },
-            "url": "grpcs://peer0.org1.co.com:8051"
+            "url": "grpcs://peer0.org2.co.com:8051"
         }
     }
 }

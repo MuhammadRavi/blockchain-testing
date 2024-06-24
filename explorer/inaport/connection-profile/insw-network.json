@@ -1,0 +1,50 @@
+{
+    "name": "insw-network",
+    "version": "1.0.0",
+    "client": {
+        "tlsEnable": true,
+        "adminCredential": {
+            "id": "admin",
+            "password": "adminpw"
+        },
+        "enableAuthentication": true,
+        "organization": "Org5MSP",
+        "connection": {
+            "timeout": {
+                "peer": {
+                    "endorser": "300"
+                },
+                "orderer": "300"
+            }
+        }
+    },
+    "channels": {
+        "dochannel": {
+            "peers": {
+                "peer0.org5.inaport.com": {}
+            }
+        }
+    },
+    "organizations": {
+        "Org5MSP": {
+            "mspid": "Org5MSP",
+            "adminPrivateKey": {
+                "path": "/tmp/crypto/peerOrganizations/org5.inaport.com/users/Admin@org5.inaport.com/msp/keystore/priv_sk"
+            },
+            "peers": [
+                "peer0.org5.inaport.com"
+            ],
+            "signedCert": {
+                "path": "/tmp/crypto/peerOrganizations/org5.inaport.com/users/Admin@org5.inaport.com/msp/signcerts/Admin@org5.inaport.com-cert.pem"
+            }
+        }
+    },
+    "peers": {
+        "peer0.org5.inaport.com": {
+            "tlsCACerts": {
+                "path": "/tmp/crypto/peerOrganizations/org5.inaport.com/peers/peer0.org5.inaport.com/tls/ca.crt"
+            },
+            "url": "grpcs://peer0.org5.inaport.com:11051"
+        }
+    }
+}

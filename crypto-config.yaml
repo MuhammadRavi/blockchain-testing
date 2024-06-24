@@ -3,21 +3,53 @@ OrdererOrgs:
     Domain: example.com
     Specs:
       - Hostname: orderer
+      - Hostname: ordererLnsw
       - Hostname: ordererCo
       - Hostname: ordererSl
+      # - Hostname: ordererTo
+      # - Hostname: ordererInaport
+      # - Hostname: ordererBank
 
 PeerOrgs:
   - Name: Org1
-    Domain: org1.co.com
+    Domain: org1.lnsw.com
     EnableNodeOUs: true
     Template:
       Count: 1
     Users:
       Count: 1
   - Name: Org2
-    Domain: org2.sl.com
+    Domain: org2.co.com
     EnableNodeOUs: true
     Template:
       Count: 1
     Users:
       Count: 1
+  - Name: Org3
+    Domain: org3.sl.com
+    EnableNodeOUs: true
+    Template:
+      Count: 1
+    Users:
+      Count: 1
+  # - Name: Org4
+  #   Domain: org4.to.com
+  #   EnableNodeOUs: true
+  #   Template:
+  #     Count: 1
+  #   Users:
+  #     Count: 1
+  # - Name: Org5
+  #   Domain: org5.inaport.com
+  #   EnableNodeOUs: true
+  #   Template:
+  #     Count: 1
+  #   Users:
+  #     Count: 1
+  # - Name: Org6
+  #   Domain: org6.bank.com
+  #   EnableNodeOUs: true
+  #   Template:
+  #     Count: 1
+  #   Users:
+  #     Count: 1
