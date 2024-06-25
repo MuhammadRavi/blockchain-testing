@@ -1,12 +1,35 @@
-# 4host-swarm
-Deploy multi-host First Network (using Fabric v2.2)
+# Multi Host Deployment
+Deploy multi-host hyperledger 
 
-Source of article: https://medium.com/@kctheservant/multi-host-deployment-for-first-network-hyperledger-fabric-v2-273b794ff3d
+Source : https://medium.com/@kctheservant/multi-host-deployment-for-first-network-hyperledger-fabric-v2-273b794ff3d
 
-sudo npm install -g npm@10.8.1
+### Prerequisites
+Open several ports for docker swarm:
+#### login as admin sudo
+#### Open ports using ufw
+ufw allow 22/tcp
+ufw allow 2376/tcp
+ufw allow 7946/tcp 
+ufw allow 7946/udp 
+ufw allow 4789/udp
+#### Reload ufw
+ufw reload
+#### if ufw is disabled, enable it
+ufw enable
+#### restart docker daemon
+systemctl restart docker
+
+### Generate docker swarm
+#### Generate docker swarm init
+docker swarm init --advertise-addr <host-1 ip address>
+#### Generate token manager
+docker swarm join-token manager
+#### Join another host
+output from join-token manager --advertise-addr <host n ip>
+#### Create overlay network
+docker network create --attachable --driver overlay first-network
 
 ### Generate artifacts
-
 #### Generate crypto-config
 cryptogen generate --config=./crypto-config.yaml --output=./crypto-config
 #### Generate genesis.block
@@ -20,6 +43,8 @@ configtxgen -profile ChannelProfile -outputAnchorPeersUpdate ./channel-artifacts
 configtxgen -profile ChannelProfile -outputAnchorPeersUpdate ./channel-artifacts/Org4MSPanchors.tx -channelID dochannel -asOrg Org4MSP
 configtxgen -profile ChannelProfile -outputAnchorPeersUpdate ./channel-artifacts/Org5MSPanchors.tx -channelID dochannel -asOrg Org5MSP
 configtxgen -profile ChannelProfile -outputAnchorPeersUpdate ./channel-artifacts/Org6MSPanchors.tx -channelID dochannel -asOrg Org6MSP
+
+### up each host
 
 ### up channel
 ./channelup.sh
