@@ -3,8 +3,10 @@ export declare class AppService {
     requestDo(data: string): Promise<any>;
     getAllDo(): Promise<string>;
     getStatusDo(orderId: string): Promise<string>;
-    updateStatusDo(orderId: string, data: UpdateStatusDoDto): Promise<any>;
-    updateDo(orderId: string, data: string): Promise<any>;
+    updateStatusDoCo(orderId: string, data: UpdateStatusDoDto): Promise<any>;
+    updateStatusDoSl(orderId: string, data: UpdateStatusDoDto): Promise<any>;
+    updateDoCo(orderId: string, data: string): Promise<any>;
+    updateDoSl(orderId: string, data: string): Promise<any>;
     releaseDo(orderId: string): Promise<any>;
     rejectDo(orderId: string): Promise<any>;
     getDoByOrderId(orderId: string): Promise<string>;

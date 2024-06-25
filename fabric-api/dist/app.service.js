@@ -14,7 +14,7 @@ const execPromisify = (0, util_1.promisify)(child_process_1.exec);
 let AppService = class AppService {
     async requestDo(data) {
         const parsedData = data.replace(/"/g, '\\"');
-        const command = `docker exec cli peer chaincode invoke -o ordererCo.example.com:8050 --tls true --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/ordererCo.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C dochannel -n chaincodes --peerAddresses peer0.org1.lnsw.com:8051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.lnsw.com/peers/peer0.org1.lnsw.com/tls/ca.crt --peerAddresses peer0.org2.co.com:9051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org2.co.com/peers/peer0.org2.co.com/tls/ca.crt -c '{\"Args\": [\"DOContract:requestDO\", \"${parsedData}\"]}'`;
+        const command = `docker exec cli peer chaincode invoke -o ordererCo.example.com:8050 --tls true --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/ordererCo.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C dochannel -n chaincodes --peerAddresses peer0.org1.lnsw.com:7051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.lnsw.com/peers/peer0.org1.lnsw.com/tls/ca.crt --peerAddresses peer0.org2.co.com:8051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org2.co.com/peers/peer0.org2.co.com/tls/ca.crt --peerAddresses peer0.org3.sl.com:9051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org3.sl.com/peers/peer0.org3.sl.com/tls/ca.crt -c '{\"Args\": [\"DOContract:requestDO\", \"${parsedData}\"]}'`;
         try {
             const { stdout, stderr } = await execPromisify(command);
             if (stderr.includes('Chaincode invoke successful')) {
@@ -56,9 +56,9 @@ let AppService = class AppService {
             throw new common_1.BadRequestException("Failed to get status DO", error.message);
         }
     }
-    async updateStatusDo(orderId, data) {
+    async updateStatusDoCo(orderId, data) {
         const { status, note } = data;
-        const command = `docker exec cli peer chaincode invoke -o ordererCo.example.com:8050 --tls true --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/ordererCo.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C dochannel -n chaincodes --peerAddresses peer0.org1.lnsw.com:8051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.lnsw.com/peers/peer0.org1.lnsw.com/tls/ca.crt --peerAddresses peer0.org2.co.com:9051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org2.co.com/peers/peer0.org2.co.com/tls/ca.crt -c '{"Args": ["DOContract:updateStatusDO", \"${orderId}\", \"${status}\", \"${note}\"]}'`;
+        const command = `docker exec cli peer chaincode invoke -o ordererCo.example.com:8050 --tls true --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/ordererCo.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C dochannel -n chaincodes --peerAddresses peer0.org1.lnsw.com:7051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.lnsw.com/peers/peer0.org1.lnsw.com/tls/ca.crt --peerAddresses peer0.org2.co.com:8051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org2.co.com/peers/peer0.org2.co.com/tls/ca.crt --peerAddresses peer0.org3.sl.com:9051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org3.sl.com/peers/peer0.org3.sl.com/tls/ca.crt -c '{"Args": ["DOContract:updateStatusDO", \"${orderId}\", \"${status}\", \"${note}\"]}'`;
         try {
             const { stdout, stderr } = await execPromisify(command);
             if (stderr.includes('Chaincode invoke successful')) {
@@ -74,9 +74,45 @@ let AppService = class AppService {
             throw new common_1.BadRequestException("Failed to Update Status DO:", error.message);
         }
     }
-    async updateDo(orderId, data) {
+    async updateStatusDoSl(orderId, data) {
+        const { status, note } = data;
+        const command = `docker exec cli peer chaincode invoke -o ordererSl.example.com:9050 --tls true --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/ordererSl.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C dochannel -n chaincodes --peerAddresses peer0.org1.lnsw.com:7051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.lnsw.com/peers/peer0.org1.lnsw.com/tls/ca.crt --peerAddresses peer0.org2.co.com:8051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org2.co.com/peers/peer0.org2.co.com/tls/ca.crt --peerAddresses peer0.org3.sl.com:9051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org3.sl.com/peers/peer0.org3.sl.com/tls/ca.crt -c '{"Args": ["DOContract:updateStatusDO", \"${orderId}\", \"${status}\", \"${note}\"]}'`;
+        try {
+            const { stdout, stderr } = await execPromisify(command);
+            if (stderr.includes('Chaincode invoke successful')) {
+                const resultMatch = stderr.match(/payload:"(.*)"/);
+                const resultJson = JSON.parse(resultMatch[1].replace(/\\"/g, '"'));
+                return resultJson;
+            }
+            else {
+                throw new Error(stderr);
+            }
+        }
+        catch (error) {
+            throw new common_1.BadRequestException("Failed to Update Status DO:", error.message);
+        }
+    }
+    async updateDoCo(orderId, data) {
         const parsedData = data.replace(/"/g, '\\"');
-        const command = `docker exec cli peer chaincode invoke -o ordererCo.example.com:8050 --tls true --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/ordererCo.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C dochannel -n chaincodes --peerAddresses peer0.org1.lnsw.com:8051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.lnsw.com/peers/peer0.org1.lnsw.com/tls/ca.crt --peerAddresses peer0.org2.co.com:9051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org2.co.com/peers/peer0.org2.co.com/tls/ca.crt -c '{"Args": ["DOContract:updateDO", \"${orderId}\", \"${parsedData}\"]}'`;
+        const command = `docker exec cli peer chaincode invoke -o ordererCo.example.com:8050 --tls true --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/ordererCo.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C dochannel -n chaincodes --peerAddresses peer0.org1.lnsw.com:7051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.lnsw.com/peers/peer0.org1.lnsw.com/tls/ca.crt --peerAddresses peer0.org2.co.com:8051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org2.co.com/peers/peer0.org2.co.com/tls/ca.crt --peerAddresses peer0.org3.sl.com:9051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org3.sl.com/peers/peer0.org3.sl.com/tls/ca.crt -c '{"Args": ["DOContract:updateDO", \"${orderId}\", \"${parsedData}\"]}'`;
+        try {
+            const { stdout, stderr } = await execPromisify(command);
+            if (stderr.includes('Chaincode invoke successful')) {
+                const resultMatch = stderr.match(/payload:"(.*)"/);
+                const resultJson = JSON.parse(resultMatch[1].replace(/\\"/g, '"'));
+                return resultJson;
+            }
+            else {
+                throw new Error(stderr);
+            }
+        }
+        catch (error) {
+            throw new common_1.BadRequestException("Failed to Update DO:", error.message);
+        }
+    }
+    async updateDoSl(orderId, data) {
+        const parsedData = data.replace(/"/g, '\\"');
+        const command = `docker exec cli peer chaincode invoke -o ordererSl.example.com:9050 --tls true --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/ordererSl.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C dochannel -n chaincodes --peerAddresses peer0.org1.lnsw.com:7051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.lnsw.com/peers/peer0.org1.lnsw.com/tls/ca.crt --peerAddresses peer0.org2.co.com:8051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org2.co.com/peers/peer0.org2.co.com/tls/ca.crt --peerAddresses peer0.org3.sl.com:9051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org3.sl.com/peers/peer0.org3.sl.com/tls/ca.crt -c '{"Args": ["DOContract:updateDO", \"${orderId}\", \"${parsedData}\"]}'`;
         try {
             const { stdout, stderr } = await execPromisify(command);
             if (stderr.includes('Chaincode invoke successful')) {
@@ -93,7 +129,7 @@ let AppService = class AppService {
         }
     }
     async releaseDo(orderId) {
-        const command = `docker exec cli peer chaincode invoke -o ordererCo.example.com:8050 --tls true --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/ordererCo.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C dochannel -n chaincodes --peerAddresses peer0.org1.lnsw.com:8051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.lnsw.com/peers/peer0.org1.lnsw.com/tls/ca.crt --peerAddresses peer0.org2.co.com:9051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org2.co.com/peers/peer0.org2.co.com/tls/ca.crt -c '{"Args": ["DOContract:releaseDO", \"${orderId}\"]}'`;
+        const command = `docker exec cli peer chaincode invoke -o ordererSl.example.com:9050 --tls true --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/ordererSl.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C dochannel -n chaincodes --peerAddresses peer0.org1.lnsw.com:7051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.lnsw.com/peers/peer0.org1.lnsw.com/tls/ca.crt --peerAddresses peer0.org2.co.com:8051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org2.co.com/peers/peer0.org2.co.com/tls/ca.crt --peerAddresses peer0.org3.sl.com:9051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org3.sl.com/peers/peer0.org3.sl.com/tls/ca.crt -c '{"Args": ["DOContract:releaseDO", \"${orderId}\"]}'`;
         try {
             const { stdout, stderr } = await execPromisify(command);
             if (stderr.includes('Chaincode invoke successful')) {
@@ -110,7 +146,7 @@ let AppService = class AppService {
         }
     }
     async rejectDo(orderId) {
-        const command = `docker exec cli peer chaincode invoke -o ordererCo.example.com:8050 --tls true --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/ordererCo.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C dochannel -n chaincodes --peerAddresses peer0.org1.lnsw.com:8051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.lnsw.com/peers/peer0.org1.lnsw.com/tls/ca.crt --peerAddresses peer0.org2.co.com:9051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org2.co.com/peers/peer0.org2.co.com/tls/ca.crt -c '{"Args": ["DOContract:rejectDO", \"${orderId}\"]}'`;
+        const command = `docker exec cli peer chaincode invoke -o ordererSl.example.com:9050 --tls true --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/ordererSl.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C dochannel -n chaincodes --peerAddresses peer0.org1.lnsw.com:7051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.lnsw.com/peers/peer0.org1.lnsw.com/tls/ca.crt --peerAddresses peer0.org2.co.com:8051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org2.co.com/peers/peer0.org2.co.com/tls/ca.crt --peerAddresses peer0.org3.sl.com:9051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org3.sl.com/peers/peer0.org3.sl.com/tls/ca.crt -c '{"Args": ["DOContract:rejectDO", \"${orderId}\"]}'`;
         try {
             const { stdout, stderr } = await execPromisify(command);
             if (stderr.includes('Chaincode invoke successful')) {

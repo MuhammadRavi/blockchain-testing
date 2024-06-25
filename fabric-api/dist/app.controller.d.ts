@@ -13,7 +13,9 @@ export declare class AppController {
     queryStatusDo(orderId: string): Promise<string>;
     queryDoByOrderId(orderId: string): Promise<string>;
     queryDoRelease(): Promise<string>;
-    updateStatusDo(orderId: string, payload: UpdateStatusDoDto): Promise<any>;
-    updateDo(orderId: string, payload: UpdateDoDto): Promise<any>;
+    updateStatusDoCo(orderId: string, payload: UpdateStatusDoDto): Promise<any>;
+    updateStatusDoSl(orderId: string, payload: UpdateStatusDoDto): Promise<any>;
+    updateDoCo(orderId: string, payload: UpdateDoDto): Promise<any>;
+    updateDoSl(orderId: string, payload: UpdateDoDto): Promise<any>;
     decisionDo(orderId: string, status: string): Promise<any>;
 }
