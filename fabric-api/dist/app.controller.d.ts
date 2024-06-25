@@ -7,12 +7,12 @@ export declare class AppController {
     private readonly appService;
     constructor(appService: AppService);
     requestDo(payload: RequestDoDto): Promise<any>;
-    queryAllDo(): Promise<string>;
-    queryAllDoCo(payload: GetDoOrgDto): Promise<string>;
-    queryAllDoSl(payload: GetDoOrgDto): Promise<string>;
-    queryStatusDo(orderId: string): Promise<string>;
-    queryDoByOrderId(orderId: string): Promise<string>;
-    queryDoRelease(): Promise<string>;
+    queryAllDo(): Promise<any>;
+    queryAllDoCo(payload: GetDoOrgDto): Promise<any>;
+    queryAllDoSl(payload: GetDoOrgDto): Promise<any>;
+    queryStatusDo(orderId: string): Promise<any>;
+    queryDoByOrderId(orderId: string): Promise<any>;
+    queryDoRelease(): Promise<any>;
     updateStatusDoCo(orderId: string, payload: UpdateStatusDoDto): Promise<any>;
     updateStatusDoSl(orderId: string, payload: UpdateStatusDoDto): Promise<any>;
     updateDoCo(orderId: string, payload: UpdateDoDto): Promise<any>;

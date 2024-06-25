@@ -37,7 +37,7 @@ let AppService = class AppService {
             if (stderr) {
                 throw new Error(stderr);
             }
-            return stdout;
+            return JSON.parse(stdout);
         }
         catch (error) {
             throw new common_1.BadRequestException('Failed to query all DO', error.message);
@@ -50,7 +50,7 @@ let AppService = class AppService {
             if (stderr) {
                 throw new Error(stderr);
             }
-            return stdout;
+            return JSON.parse(stdout);
         }
         catch (error) {
             throw new common_1.BadRequestException("Failed to get status DO", error.message);
@@ -169,7 +169,7 @@ let AppService = class AppService {
             if (stderr) {
                 throw new Error(stderr);
             }
-            return stdout;
+            return JSON.parse(stdout);
         }
         catch (error) {
             throw new common_1.BadRequestException("Failed to Get DO Data By Order Id", error.message);
@@ -182,7 +182,7 @@ let AppService = class AppService {
             if (stderr) {
                 throw new Error(stderr);
             }
-            return stdout;
+            return JSON.parse(stdout);
         }
         catch (error) {
             throw new common_1.BadRequestException("Failed to Get DO Release", error.message);
@@ -195,7 +195,7 @@ let AppService = class AppService {
             if (stderr) {
                 throw new Error(stderr);
             }
-            return stdout;
+            return JSON.parse(stdout);
         }
         catch (error) {
             throw new common_1.BadRequestException('Failed to query all DO CO', error.message);
@@ -208,7 +208,7 @@ let AppService = class AppService {
             if (stderr) {
                 throw new Error(stderr);
             }
-            return stdout;
+            return JSON.parse(stdout);
         }
         catch (error) {
             throw new common_1.BadRequestException('Failed to query all DO SL', error.message);

@@ -33,7 +33,7 @@ export class AppService {
       if (stderr) {
         throw new Error(stderr)
       }
-      return stdout;
+      return JSON.parse(stdout);
     } catch (error) {
       throw new BadRequestException('Failed to query all DO', error.message)
     }
@@ -46,7 +46,7 @@ export class AppService {
       if (stderr) {
         throw new Error(stderr)
       }
-      return stdout;
+      return JSON.parse(stdout);
     } catch (error) {
       throw new BadRequestException("Failed to get status DO", error.message)
     }
@@ -172,7 +172,7 @@ export class AppService {
       if (stderr) {
         throw new Error(stderr)
       }
-      return stdout;
+      return JSON.parse(stdout);
     } catch (error) {
       throw new BadRequestException("Failed to Get DO Data By Order Id", error.message)
     }
@@ -185,7 +185,7 @@ export class AppService {
       if (stderr) {
         throw new Error(stderr)
       }
-      return stdout;
+      return JSON.parse(stdout);
     } catch (error) {
       throw new BadRequestException("Failed to Get DO Release", error.message)
     }
@@ -198,7 +198,7 @@ export class AppService {
       if (stderr) {
         throw new Error(stderr)
       }
-      return stdout;
+      return JSON.parse(stdout);
     } catch (error) {
       throw new BadRequestException('Failed to query all DO CO', error.message)
     }
@@ -211,7 +211,7 @@ export class AppService {
       if (stderr) {
         throw new Error(stderr)
       }
-      return stdout;
+      return JSON.parse(stdout);
     } catch (error) {
       throw new BadRequestException('Failed to query all DO SL', error.message)
     }
