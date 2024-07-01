@@ -12,6 +12,7 @@ ufw allow 2376/tcp
 ufw allow 7946/tcp 
 ufw allow 7946/udp 
 ufw allow 4789/udp
+ufw allow 3000
 ##### Reload ufw
 ufw reload
 ##### if ufw is disabled, enable it
@@ -63,7 +64,7 @@ cd ../..
 ### Zip chaincodes
 peer lifecycle chaincode package ./channel-artifacts/chaincodes.tar.gz --path ./chaincodes/chaincode-kv-node --lang node --label chaincodesv1
 ### Install chaincodes
-./chaincodeinstall.sh
+./chaincode-install.sh
 
 ### Check images for each host
 docker images dev-*

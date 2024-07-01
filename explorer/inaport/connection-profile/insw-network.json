@@ -4,8 +4,8 @@
     "client": {
         "tlsEnable": true,
         "adminCredential": {
-            "id": "admin",
-            "password": "adminpw"
+            "id": "admininaport",
+            "password": "$4dm1n1n4p0rt#"
         },
         "enableAuthentication": true,
         "organization": "Org5MSP",
