@@ -51,7 +51,7 @@ configtxgen -profile ChannelProfile -outputAnchorPeersUpdate ./channel-artifacts
 ### up channel
 ./channelup.sh
 
-### Check if node has been added to channel
+### Check if node has been added to channel (for each host)
 docker exec peer0.org1.lnsw.com peer channel getinfo -c dochannel
 docker exec peer0.org2.co.com peer channel getinfo -c dochannel
 
