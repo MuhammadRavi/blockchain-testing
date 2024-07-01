@@ -34,8 +34,7 @@ services:
       - CORE_PEER_LISTENADDRESS=0.0.0.0:7051
       - CORE_PEER_CHAINCODEADDRESS=peer0.org1.lnsw.com:7052
       - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:7052
-      # - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.org2.co.com:8051,peer0.org3.sl.com:9051,peer0.org4.to.com:10051,peer0.org5.inaport.com:11051,peer0.org6.bank.com:12051
-      - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.org2.co.com:8051,peer0.org3.sl.com:9051
+      - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.org2.co.com:8051,peer0.org3.sl.com:9051,peer0.org4.to.com:10051,peer0.org5.inaport.com:11051,peer0.org6.bank.com:12051
       - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.org1.lnsw.com:7051
       - CORE_PEER_LOCALMSPID=Org1MSP
     volumes:
@@ -58,8 +57,7 @@ services:
       - CORE_PEER_CHAINCODEADDRESS=peer0.org2.co.com:8052
       - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:8052
       - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.org2.co.com:8051
-      # - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.org1.lnsw.com:7051,peer0.org3.sl.com:9051,peer0.org4.to.com:10051,peer0.org5.inaport.com:11051,peer0.org6.bank.com:12051
-      - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.org1.lnsw.com:7051,peer0.org3.sl.com:9051
+      - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.org1.lnsw.com:7051,peer0.org3.sl.com:9051,peer0.org4.to.com:10051,peer0.org5.inaport.com:11051,peer0.org6.bank.com:12051
       - CORE_PEER_LOCALMSPID=Org2MSP
     volumes:
         - /var/run/:/host/var/run/
@@ -81,8 +79,7 @@ services:
       - CORE_PEER_CHAINCODEADDRESS=peer0.org3.sl.com:9052
       - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:9052
       - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.org3.sl.com:9051
-      # - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.org1.lnsw.com:7051,peer0.org2.co.com:8051,peer0.org4.to.com:10051,peer0.org5.inaport.com:11051,peer0.org6.bank.com:12051
-      - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.org1.lnsw.com:7051,peer0.org2.co.com:8051
+      - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.org1.lnsw.com:7051,peer0.org2.co.com:8051,peer0.org4.to.com:10051,peer0.org5.inaport.com:11051,peer0.org6.bank.com:12051
       - CORE_PEER_LOCALMSPID=Org3MSP
     volumes:
         - /var/run/:/host/var/run/
@@ -156,5 +153,4 @@ services:
         - ../crypto-config/peerOrganizations/org6.bank.com/peers/peer0.org6.bank.com/tls:/etc/hyperledger/fabric/tls
         - peer0.org6.bank.com:/var/hyperledger/production
     ports:
-      - 12051:12051
-
+      - 12051:
