@@ -7,7 +7,7 @@
             "id": "adminto",
             "password": "$4dm1nt0#"
         },
-        "enableAuthentication": false,
+        "enableAuthentication": true,
         "organization": "Org4MSP",
         "connection": {
             "timeout": {

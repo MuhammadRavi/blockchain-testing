@@ -7,7 +7,7 @@
             "id": "adminbank",
             "password": "$4dm1nb4nk#"
         },
-        "enableAuthentication": false,
+        "enableAuthentication": true,
         "organization": "Org6MSP",
         "connection": {
             "timeout": {
