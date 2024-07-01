@@ -153,4 +153,4 @@ services:
         - ../crypto-config/peerOrganizations/org6.bank.com/peers/peer0.org6.bank.com/tls:/etc/hyperledger/fabric/tls
         - peer0.org6.bank.com:/var/hyperledger/production
     ports:
-      - 12051:
+      - 12051:12051
