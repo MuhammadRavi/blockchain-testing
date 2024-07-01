@@ -6,9 +6,9 @@ OrdererOrgs:
       - Hostname: ordererLnsw
       - Hostname: ordererCo
       - Hostname: ordererSl
-      # - Hostname: ordererTo
-      # - Hostname: ordererInaport
-      # - Hostname: ordererBank
+      - Hostname: ordererTo
+      - Hostname: ordererInaport
+      - Hostname: ordererBank
 
 PeerOrgs:
   - Name: Org1
@@ -32,24 +32,24 @@ PeerOrgs:
       Count: 1
     Users:
       Count: 1
-  # - Name: Org4
-  #   Domain: org4.to.com
-  #   EnableNodeOUs: true
-  #   Template:
-  #     Count: 1
-  #   Users:
-  #     Count: 1
-  # - Name: Org5
-  #   Domain: org5.inaport.com
-  #   EnableNodeOUs: true
-  #   Template:
-  #     Count: 1
-  #   Users:
-  #     Count: 1
-  # - Name: Org6
-  #   Domain: org6.bank.com
-  #   EnableNodeOUs: true
-  #   Template:
-  #     Count: 1
-  #   Users:
-  #     Count: 1
+  - Name: Org4
+    Domain: org4.to.com
+    EnableNodeOUs: true
+    Template:
+      Count: 1
+    Users:
+      Count: 1
+  - Name: Org5
+    Domain: org5.inaport.com
+    EnableNodeOUs: true
+    Template:
+      Count: 1
+    Users:
+      Count: 1
+  - Name: Org6
+    Domain: org6.bank.com
+    EnableNodeOUs: true
+    Template:
+      Count: 1
+    Users:
+      Count: 1
