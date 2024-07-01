@@ -12,7 +12,7 @@ volumes:
   walletstore:
 
 networks:
-  insw_network:
+  insw-network:
     external: true
 
 services:
@@ -24,7 +24,7 @@ services:
       - ORDERER_GENERAL_LISTENPORT=11050
     container_name: ordererInaport.example.com
     networks:
-      - insw_network
+      - insw-network
     volumes:
       - ./channel-artifacts/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
       - ./crypto-config/ordererOrganizations/example.com/orderers/ordererInaport.example.com/msp:/var/hyperledger/orderer/msp
@@ -39,7 +39,7 @@ services:
       file:  base/docker-compose-base.yaml
       service: peer0.org5.inaport.com
     networks:
-      - insw_network
+      - insw-network
 
   cli:
     container_name: cli
@@ -72,5 +72,5 @@ services:
       - ordererInaport.example.com
       - peer0.org5.inaport.com
     networks:
-      - insw_network
+      - insw-network
 

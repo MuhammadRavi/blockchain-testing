@@ -7,7 +7,7 @@ volumes:
   walletstore:
 
 networks:
-  insw_network:
+  insw-network:
     external: true
 
 services:
@@ -28,7 +28,7 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql/data
     networks:
-      - insw_network
+      - insw-network
 
   explorer.example.com:
     image: ghcr.io/hyperledger-labs/explorer:latest
@@ -56,4 +56,4 @@ services:
       explorerdb.example.com:
         condition: service_healthy
     networks:
-      - insw_network
+      - insw-network
