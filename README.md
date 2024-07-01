@@ -55,6 +55,10 @@ configtxgen -profile ChannelProfile -outputAnchorPeersUpdate ./channel-artifacts
 ### Check if node has been added to channel (for each host)
 docker exec peer0.org1.lnsw.com peer channel getinfo -c dochannel
 docker exec peer0.org2.co.com peer channel getinfo -c dochannel
+docker exec peer0.org3.sl.com peer channel getinfo -c dochannel
+docker exec peer0.org4.to.com peer channel getinfo -c dochannel
+docker exec peer0.org5.inaport.com peer channel getinfo -c dochannel
+docker exec peer0.org6.bank.com peer channel getinfo -c dochannel
 
 ### Create chaincodes
 mkdir chaincodes/chaincode-kv-node
@@ -83,11 +87,19 @@ docker exec cli peer lifecycle chaincode checkcommitreadiness --channelID dochan
 ### Check commit status
 docker exec cli peer lifecycle chaincode querycommitted --channelID dochannel --name chaincodes
 
+## Menjalankan Fabric API
+Note: pastikan telah menginstall node js dengan versi v18.20.3 LTS
+cd fabric-api
+npm install .
+npm run start:dev (dev)
+npm run start (prod)
+
+
 ## Instalasi Hyperledger Explorer
 ### Konfigurasi folder explorer mengikuti environment host berada
 ### Mount ke folder explorer
-cd explorer
+cd explorer/node-name
 ### Jalankan Service Kontainer
-docker-compose up -d
+docker compose up -d
 ### Matikan Service Kontainer jika dibutuhkan
-docker-compose down -v
+docker compose down -v

@@ -4,8 +4,8 @@
     "client": {
         "tlsEnable": true,
         "adminCredential": {
-            "id": "adminlnsw",
-            "password": "$4dm1nlnsw#"
+            "id": "admin",
+            "password": "adminpw"
         },
         "enableAuthentication": true,
         "organization": "Org1MSP",
