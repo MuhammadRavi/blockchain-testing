@@ -7,7 +7,7 @@
             "id": "adminsl",
             "password": "$4dm1nsl#"
         },
-        "enableAuthentication": true,
+        "enableAuthentication": false,
         "organization": "Org3MSP",
         "connection": {
             "timeout": {
