@@ -75,3 +75,14 @@ services:
     networks:
       - insw-network
 
+  fabric-api:
+    build: ./fabric-api
+    container_name: fabric_api
+    command: sh -c "npm run build && npm run start:prod"
+    ports:
+      - "3000:3000"
+    depends_on:
+      - cli
+    networks:
+      - insw-network
+

@@ -48,7 +48,7 @@ class DOContract extends Contract {
         const orderData = JSON.parse(buffer.toString())
         // console.log(orderData) // jadi format json
         orderData.status = status;
-        orderData.note = note;
+        orderData.statusNote = note;
         orderData.statusDate = this.getTimestamp(ctx.stub.getTxTimestamp());
         await ctx.stub.putState(orderId, Buffer.from(JSON.stringify(orderData)));
         return { success: "OK", status: orderData.status, datetime: orderData.statusDate }
