@@ -5,7 +5,7 @@ CHAINCODE_NAME="chaincodes"
 CHANNEL_NAME="dochannel"
 VERSION="1"
 SEQUENCE="1"
-PACKAGE_ID="chaincodesv1:5680ca78671470e86902a8a3d8fb702c368373bee305ab5ccc10a1f79f417e93"
+PACKAGE_ID="chaincodesv1:eaf28f1364bbe18784c4f585136529ff82e26d2a0e63207bbd46c0a53a0c082f"
 ORDERER_CA="/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem"
 
 # Approve Chaincode on LNSW Host
