@@ -23,13 +23,13 @@ export class AppController {
   }
 
   @ApiTags("query")
-  @Get('query/do/co')
+  @Post('query/do/co')
   queryAllDoCo(@Body() payload: GetDoOrgDto) {
     return this.appService.getAllDoCo(payload.orgName);
   }
 
   @ApiTags("query")
-  @Get('query/do/sl')
+  @Post('query/do/sl')
   queryAllDoSl(@Body() payload: GetDoOrgDto) {
     return this.appService.getAllDoSl(payload.orgName)
   }
