@@ -15,7 +15,6 @@ networks:
     external: true
 
 services:
-
   explorerdb.example.com:
     image: ghcr.io/hyperledger-labs/explorer-db:latest
     container_name: explorerdb.example.com
