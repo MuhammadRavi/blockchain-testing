@@ -7,7 +7,6 @@ version: '2'
 
 volumes:
   peer0.org3.sl.com:
-  ordererSl.example.com:
   pgdata:
   walletstore:
 
@@ -16,23 +15,6 @@ networks:
     external: true
 
 services:
-  ordererSl.example.com:
-    extends:
-      file: base/peer-base.yaml
-      service: orderer-base
-    environment:
-      - ORDERER_GENERAL_LISTENPORT=9050
-    container_name: ordererSl.example.com
-    networks:
-      - insw-network
-    volumes:
-      - ./channel-artifacts/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
-      - ./crypto-config/ordererOrganizations/example.com/orderers/ordererSl.example.com/msp:/var/hyperledger/orderer/msp
-      - ./crypto-config/ordererOrganizations/example.com/orderers/ordererSl.example.com/tls/:/var/hyperledger/orderer/tls
-      - ordererSl.example.com:/var/hyperledger/production/orderer
-    ports:
-      - 9050:7050
-
   peer0.org3.sl.com:
     container_name: peer0.org3.sl.com
     extends:
@@ -69,7 +51,6 @@ services:
       - ./scripts:/opt/gopath/src/github.com/hyperledger/fabric/peer/scripts/
       - ./channel-artifacts:/opt/gopath/src/github.com/hyperledger/fabric/peer/channel-artifacts
     depends_on:
-      - ordererSl.example.com
       - peer0.org3.sl.com
     networks:
       - insw-network
