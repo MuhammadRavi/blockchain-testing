@@ -184,7 +184,7 @@ Application: &ApplicationDefaults
     <<: *ApplicationCapabilities
 
 Orderer: &OrdererDefaults
-  OrdererType: etcdraft
+  OrdererType: solo
   Addresses:
     - 10.239.54.32:7050
   BatchTimeout: 2s
@@ -208,44 +208,6 @@ Orderer: &OrdererDefaults
       Rule: "ANY Writers"
   Capabilities:
     <<: *OrdererCapabilities
-  EtcdRaft:
-    Consenters:
-      - Host: 10.239.54.32
-        Port: 7050
-        ClientTLSCert: crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/tls/server.crt
-        ServerTLSCert: crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/tls/server.crt
-      - Host: 10.239.54.36
-        Port: 8050
-        ClientTLSCert: crypto-config/ordererOrganizations/example.com/orderers/ordererCo.example.com/tls/server.crt
-        ServerTLSCert: crypto-config/ordererOrganizations/example.com/orderers/ordererCo.example.com/tls/server.crt
-      - Host: 10.239.54.38
-        Port: 9050
-        ClientTLSCert: crypto-config/ordererOrganizations/example.com/orderers/ordererSl.example.com/tls/server.crt
-        ServerTLSCert: crypto-config/ordererOrganizations/example.com/orderers/ordererSl.example.com/tls/server.crt
-      - Host: 10.239.54.32
-        Port: 13050
-        ClientTLSCert: crypto-config/ordererOrganizations/example.com/orderers/ordererLnsw.example.com/tls/server.crt
-        ServerTLSCert: crypto-config/ordererOrganizations/example.com/orderers/ordererLnsw.example.com/tls/server.crt
-      - Host: 10.239.54.39
-        Port: 10050
-        ClientTLSCert: crypto-config/ordererOrganizations/example.com/orderers/ordererTo.example.com/tls/server.crt
-        ServerTLSCert: crypto-config/ordererOrganizations/example.com/orderers/ordererTo.example.com/tls/server.crt
-      - Host: 10.239.54.33
-        Port: 11050
-        ClientTLSCert: crypto-config/ordererOrganizations/example.com/orderers/ordererInaport.example.com/tls/server.crt
-        ServerTLSCert: crypto-config/ordererOrganizations/example.com/orderers/ordererInaport.example.com/tls/server.crt
-      - Host: 10.239.54.23
-        Port: 12050
-        ClientTLSCert: crypto-config/ordererOrganizations/example.com/orderers/ordererBank.example.com/tls/server.crt
-        ServerTLSCert: crypto-config/ordererOrganizations/example.com/orderers/ordererBank.example.com/tls/server.crt
-  Addresses:
-    - 10.239.54.32:7050
-    - 10.239.54.36:8050
-    - 10.239.54.38:9050
-    - 10.239.54.32:13050
-    - 10.239.54.39:10050
-    - 10.239.54.33:11050
-    - 10.239.54.23:12050
 
 Profiles:
   OrdererGenesis:

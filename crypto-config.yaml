@@ -5,31 +5,7 @@ OrdererOrgs:
       - Hostname: orderer
         SANS:
           - orderer.example.com       # DNS
-          - 10.239.54.32 
-      - Hostname: ordererLnsw
-        SANS:
-          - ordererLnsw.example.com       # DNS
-          - 10.239.54.32 
-      - Hostname: ordererCo
-        SANS:
-          - ordererCo.example.com       # DNS
-          - 10.239.54.36
-      - Hostname: ordererSl
-        SANS:
-          - ordererSl.example.com       # DNS
-          - 10.239.54.38
-      - Hostname: ordererTo
-        SANS:
-          - ordererTo.example.com       # DNS
-          - 10.239.54.39
-      - Hostname: ordererInaport
-        SANS:
-          - ordererInaport.example.com       # DNS
-          - 10.239.54.33
-      - Hostname: ordererBank
-        SANS:
-          - ordererBank.example.com       # DNS
-          - 10.239.54.33
+          - 10.239.54.32              # IP Address
 
 PeerOrgs:
   - Name: Org1
