@@ -3,8 +3,8 @@
 # Define variables
 CHAINCODE_NAME="chaincodes"
 CHANNEL_NAME="dochannel"
-VERSION="1"
-SEQUENCE="1"
+VERSION="2"
+SEQUENCE="2"
 ORDERER_CA="/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem"
 PEER0_ORG1_ADDRESS="10.239.54.32:7051"
 PEER0_ORG1_TLS_ROOTCERT="/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.lnsw.com/peers/peer0.org1.lnsw.com/tls/ca.crt"
