@@ -20,7 +20,7 @@ PEER0_ORG6_ADDRESS="10.239.54.23:12051"
 PEER0_ORG6_TLS_ROOTCERT="/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org6.bank.com/peers/peer0.org6.bank.com/tls/ca.crt"
 
 # Commit chaincode
-docker exec cli peer lifecycle chaincode commit -o 10.239.54.32:7050 --tls --cafile $ORDERER_CA \
+docker exec cli peer lifecycle chaincode commit -o orderer.example.com:7050 --tls --cafile $ORDERER_CA \
   --peerAddresses $PEER0_ORG1_ADDRESS --tlsRootCertFiles $PEER0_ORG1_TLS_ROOTCERT \
   --peerAddresses $PEER0_ORG2_ADDRESS --tlsRootCertFiles $PEER0_ORG2_TLS_ROOTCERT \
   --peerAddresses $PEER0_ORG3_ADDRESS --tlsRootCertFiles $PEER0_ORG3_TLS_ROOTCERT \
