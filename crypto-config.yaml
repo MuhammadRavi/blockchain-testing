@@ -3,12 +3,33 @@ OrdererOrgs:
     Domain: example.com
     Specs:
       - Hostname: orderer
+        SANS:
+          - orderer.example.com       # DNS
+          - 10.239.54.32 
       - Hostname: ordererLnsw
+        SANS:
+          - ordererLnsw.example.com       # DNS
+          - 10.239.54.32 
       - Hostname: ordererCo
+        SANS:
+          - ordererCo.example.com       # DNS
+          - 10.239.54.36
       - Hostname: ordererSl
+        SANS:
+          - ordererSl.example.com       # DNS
+          - 10.239.54.38
       - Hostname: ordererTo
+        SANS:
+          - ordererTo.example.com       # DNS
+          - 10.239.54.39
       - Hostname: ordererInaport
+        SANS:
+          - ordererInaport.example.com       # DNS
+          - 10.239.54.33
       - Hostname: ordererBank
+        SANS:
+          - ordererBank.example.com       # DNS
+          - 10.239.54.33
 
 PeerOrgs:
   - Name: Org1
@@ -18,6 +39,11 @@ PeerOrgs:
       Count: 1
     Users:
       Count: 1
+    Specs:
+      - Hostname: peer0
+        SANS:
+          - peer0.org1.lnsw.com   # DNS
+          - 10.239.54.32          # IP Address
   - Name: Org2
     Domain: org2.co.com
     EnableNodeOUs: true
@@ -25,6 +51,11 @@ PeerOrgs:
       Count: 1
     Users:
       Count: 1
+    Specs:
+      - Hostname: peer0
+        SANS:
+          - peer0.org2.co.com   # DNS
+          - 10.239.54.36          # IP Address
   - Name: Org3
     Domain: org3.sl.com
     EnableNodeOUs: true
@@ -32,6 +63,11 @@ PeerOrgs:
       Count: 1
     Users:
       Count: 1
+    Specs:
+      - Hostname: peer0
+        SANS:
+          - peer0.org3.sl.com   # DNS
+          - 10.239.54.38          # IP Address
   - Name: Org4
     Domain: org4.to.com
     EnableNodeOUs: true
@@ -39,6 +75,11 @@ PeerOrgs:
       Count: 1
     Users:
       Count: 1
+    Specs:
+      - Hostname: peer0
+        SANS:
+          - peer0.org4.to.com   # DNS
+          - 10.239.54.39          # IP Address
   - Name: Org5
     Domain: org5.inaport.com
     EnableNodeOUs: true
@@ -46,6 +87,11 @@ PeerOrgs:
       Count: 1
     Users:
       Count: 1
+    Specs:
+      - Hostname: peer0
+        SANS:
+          - peer0.org5.inaport.com   # DNS
+          - 10.239.54.33          # IP Address
   - Name: Org6
     Domain: org6.bank.com
     EnableNodeOUs: true
@@ -53,3 +99,8 @@ PeerOrgs:
       Count: 1
     Users:
       Count: 1
+    Specs:
+      - Hostname: peer0
+        SANS:
+          - peer0.org6.bank.com   # DNS
+          - 10.239.54.23          # IP Address

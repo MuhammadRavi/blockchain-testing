@@ -1,5 +1,5 @@
 # Create channel
-docker exec cli peer channel create -o orderer.example.com:7050 -c dochannel -f ./channel-artifacts/channel.tx --outputBlock ./channel-artifacts/dochannel.block --tls --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem
+docker exec cli peer channel create -o 10.239.54.32:7050 -c dochannel -f ./channel-artifacts/channel.tx --outputBlock ./channel-artifacts/dochannel.block --tls --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem
 
 sleep 15
 
