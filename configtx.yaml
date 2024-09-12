@@ -57,7 +57,7 @@ Organizations:
         Type: Signature
         Rule: "OR('Org1MSP.member')"
     AnchorPeers:
-      - Host: peer0.org1.lnsw.com
+      - Host: 10.239.54.32
         Port: 7051
 
   - &Org2
@@ -78,7 +78,7 @@ Organizations:
         Type: Signature
         Rule: "OR('Org2MSP.member')"
     AnchorPeers:
-      - Host: peer0.org2.co.com
+      - Host: 10.239.54.36
         Port: 8051
 
   - &Org3
@@ -99,7 +99,7 @@ Organizations:
         Type: Signature
         Rule: "OR('Org3MSP.member')"
     AnchorPeers:
-      - Host: peer0.org3.sl.com
+      - Host: 10.239.54.38
         Port: 9051
 
   - &Org4
@@ -120,7 +120,7 @@ Organizations:
         Type: Signature
         Rule: "OR('Org4MSP.member')"
     AnchorPeers:
-      - Host: peer0.org4.to.com
+      - Host: 10.239.54.39
         Port: 10051
 
   - &Org5
@@ -141,7 +141,7 @@ Organizations:
         Type: Signature
         Rule: "OR('Org5MSP.member')"
     AnchorPeers:
-      - Host: peer0.org5.inaport.com
+      - Host: 10.239.54.33
         Port: 11051
 
   - &Org6
@@ -162,7 +162,7 @@ Organizations:
         Type: Signature
         Rule: "OR('Org6MSP.member')"
     AnchorPeers:
-      - Host: peer0.org6.bank.com
+      - Host: 10.239.54.23
         Port: 12051
 
 Application: &ApplicationDefaults
@@ -186,7 +186,7 @@ Application: &ApplicationDefaults
 Orderer: &OrdererDefaults
   OrdererType: etcdraft
   Addresses:
-    - orderer.example.com:7050
+    - 10.239.54.32:7050
   BatchTimeout: 2s
   BatchSize:
     MaxMessageCount: 10
@@ -210,42 +210,42 @@ Orderer: &OrdererDefaults
     <<: *OrdererCapabilities
   EtcdRaft:
     Consenters:
-      - Host: orderer.example.com
+      - Host: 10.239.54.32
         Port: 7050
         ClientTLSCert: crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/tls/server.crt
         ServerTLSCert: crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/tls/server.crt
-      - Host: ordererCo.example.com
+      - Host: 10.239.54.36
         Port: 8050
         ClientTLSCert: crypto-config/ordererOrganizations/example.com/orderers/ordererCo.example.com/tls/server.crt
         ServerTLSCert: crypto-config/ordererOrganizations/example.com/orderers/ordererCo.example.com/tls/server.crt
-      - Host: ordererSl.example.com
+      - Host: 10.239.54.38
         Port: 9050
         ClientTLSCert: crypto-config/ordererOrganizations/example.com/orderers/ordererSl.example.com/tls/server.crt
         ServerTLSCert: crypto-config/ordererOrganizations/example.com/orderers/ordererSl.example.com/tls/server.crt
-      - Host: ordererLnsw.example.com
+      - Host: 10.239.54.32
         Port: 13050
         ClientTLSCert: crypto-config/ordererOrganizations/example.com/orderers/ordererLnsw.example.com/tls/server.crt
         ServerTLSCert: crypto-config/ordererOrganizations/example.com/orderers/ordererLnsw.example.com/tls/server.crt
-      - Host: ordererTo.example.com
+      - Host: 10.239.54.39
         Port: 10050
         ClientTLSCert: crypto-config/ordererOrganizations/example.com/orderers/ordererTo.example.com/tls/server.crt
         ServerTLSCert: crypto-config/ordererOrganizations/example.com/orderers/ordererTo.example.com/tls/server.crt
-      - Host: ordererInaport.example.com
+      - Host: 10.239.54.33
         Port: 11050
         ClientTLSCert: crypto-config/ordererOrganizations/example.com/orderers/ordererInaport.example.com/tls/server.crt
         ServerTLSCert: crypto-config/ordererOrganizations/example.com/orderers/ordererInaport.example.com/tls/server.crt
-      - Host: ordererBank.example.com
+      - Host: 10.239.54.23
         Port: 12050
         ClientTLSCert: crypto-config/ordererOrganizations/example.com/orderers/ordererBank.example.com/tls/server.crt
         ServerTLSCert: crypto-config/ordererOrganizations/example.com/orderers/ordererBank.example.com/tls/server.crt
   Addresses:
-      - orderer.example.com:7050
-      - ordererCo.example.com:8050
-      - ordererSl.example.com:9050
-      - ordererLnsw.example.com:13050
-      - ordererTo.example.com:10050
-      - ordererInaport.example.com:11050
-      - ordererBank.example.com:12050
+    - 10.239.54.32:7050
+    - 10.239.54.36:8050
+    - 10.239.54.38:9050
+    - 10.239.54.32:13050
+    - 10.239.54.39:10050
+    - 10.239.54.33:11050
+    - 10.239.54.23:12050
 
 Profiles:
   OrdererGenesis:

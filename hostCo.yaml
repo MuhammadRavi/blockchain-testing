@@ -39,7 +39,7 @@ services:
       - ./crypto-config/ordererOrganizations/example.com/orderers/ordererCo.example.com/tls/:/var/hyperledger/orderer/tls
       - ordererCo.example.com:/var/hyperledger/production/orderer
     ports:
-      - 8050:8050
+      - 8050:7050
 
   cli:
     container_name: cli
@@ -53,7 +53,7 @@ services:
       #- FABRIC_LOGGING_SPEC=DEBUG
       - FABRIC_LOGGING_SPEC=INFO
       - CORE_PEER_ID=cli
-      - CORE_PEER_ADDRESS=peer0.org2.co.com:8051
+      - CORE_PEER_ADDRESS=10.239.54.36:8051
       - CORE_PEER_LOCALMSPID=Org2MSP
       - CORE_PEER_TLS_ENABLED=true
       - CORE_PEER_TLS_CERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org2.co.com/peers/peer0.org2.co.com/tls/server.crt
@@ -63,11 +63,11 @@ services:
     working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
     command: /bin/bash
     volumes:
-        - /var/run/:/host/var/run/
-        - ./../chaincode/:/opt/gopath/src/github.com/chaincode
-        - ./crypto-config:/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/
-        - ./scripts:/opt/gopath/src/github.com/hyperledger/fabric/peer/scripts/
-        - ./channel-artifacts:/opt/gopath/src/github.com/hyperledger/fabric/peer/channel-artifacts
+      - /var/run/:/host/var/run/
+      - ./../chaincode/:/opt/gopath/src/github.com/chaincode
+      - ./crypto-config:/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/
+      - ./scripts:/opt/gopath/src/github.com/hyperledger/fabric/peer/scripts/
+      - ./channel-artifacts:/opt/gopath/src/github.com/hyperledger/fabric/peer/channel-artifacts
     depends_on:
       - ordererCo.example.com
       - peer0.org2.co.com
