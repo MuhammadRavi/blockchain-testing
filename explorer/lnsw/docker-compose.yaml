@@ -14,6 +14,24 @@ networks:
     external: true
 
 services:
+  explorerdb.example.com:
+    image: ghcr.io/hyperledger-labs/explorer-db:latest
+    container_name: explorerdb.example.com
+    hostname: explorerdb.example.com
+    environment:
+      - DATABASE_DATABASE=fabricexplorer
+      - DATABASE_USERNAME=hppoc
+      - DATABASE_PASSWORD=password
+    healthcheck:
+      test: "pg_isready -h localhost -p 5432 -q -U postgres"
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - insw-network
+
   explorer.example.com:
     image: ghcr.io/hyperledger-labs/explorer:latest
     container_name: explorer.example.com
@@ -23,7 +41,7 @@ services:
       - DATABASE_DATABASE=fabricexplorer
       - DATABASE_USERNAME=hppoc
       - DATABASE_PASSWD=password
-      - LOG_LEVEL_APP=info
+      - LOG_LEVEL_APP=debug
       - LOG_LEVEL_DB=info
       - LOG_LEVEL_CONSOLE=debug
       - LOG_CONSOLE_STDOUT=true
@@ -36,5 +54,8 @@ services:
       - walletstore:/opt/explorer/wallet
     ports:
       - 8086:8086
+    depends_on:
+      explorerdb.example.com:
+        condition: service_healthy
     networks:
       - insw-network
