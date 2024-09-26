@@ -7,7 +7,7 @@
       "id": "admininaport",
       "password": "$4dm1n1n4p0rt#"
     },
-    "enableAuthentication": true,
+    "enableAuthentication": false,
     "organization": "Org5MSP",
     "connection": {
       "timeout": {

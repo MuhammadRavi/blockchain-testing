@@ -7,7 +7,7 @@
       "id": "adminco",
       "password": "$4dm1nc0#"
     },
-    "enableAuthentication": true,
+    "enableAuthentication": false,
     "organization": "Org2MSP",
     "connection": {
       "timeout": {
