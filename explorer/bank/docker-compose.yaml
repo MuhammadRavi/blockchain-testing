@@ -1,6 +1,5 @@
-
 # SPDX-License-Identifier: Apache-2.0
-version: '2.1'
+version: "2.1"
 
 volumes:
   pgdata:
@@ -42,7 +41,7 @@ services:
       - DATABASE_DATABASE=fabricexplorer
       - DATABASE_USERNAME=hppoc
       - DATABASE_PASSWD=password
-      - LOG_LEVEL_APP=info
+      - LOG_LEVEL_APP=debug
       - LOG_LEVEL_DB=info
       - LOG_LEVEL_CONSOLE=debug
       - LOG_CONSOLE_STDOUT=true
