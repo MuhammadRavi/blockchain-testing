@@ -1,0 +1,13 @@
+{
+  "network-configs": {
+    "lnsw-network": {
+      "name": "Lembaga Nasional Single Window (LNSW)",
+      "profile": "./connection-profile/lnsw-network.json"
+    },
+    "co-network": {
+      "name": "Cargo Owner (CO)",
+      "profile": "./connection-profile/co-network.json"
+    }
+  },
+  "license": "Apache-2.0"
+}

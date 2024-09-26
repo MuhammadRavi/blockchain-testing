@@ -1,0 +1,56 @@
+{
+  "name": "co-network",
+  "version": "1.0.0",
+  "client": {
+    "tlsEnable": true,
+    "adminCredential": {
+      "id": "adminco",
+      "password": "$4dm1nc0#"
+    },
+    "enableAuthentication": true,
+    "organization": "Org2MSP",
+    "connection": {
+      "timeout": {
+        "peer": {
+          "endorser": "300"
+        },
+        "orderer": "300"
+      }
+    }
+  },
+  "channels": {
+    "dochannel": {
+      "peers": {
+        "peer0.org2.co.com": {}
+      }
+    }
+  },
+  "organizations": {
+    "Org2MSP": {
+      "mspid": "Org2MSP",
+      "adminPrivateKey": {
+        "path": "/tmp/crypto/peerOrganizations/org2.co.com/users/Admin@org2.co.com/msp/keystore/priv_sk"
+      },
+      "peers": ["peer0.org2.co.com"],
+      "signedCert": {
+        "path": "/tmp/crypto/peerOrganizations/org2.co.com/users/Admin@org2.co.com/msp/signcerts/Admin@org2.co.com-cert.pem"
+      }
+    }
+  },
+  "peers": {
+    "peer0.org2.co.com": {
+      "tlsCACerts": {
+        "path": "/tmp/crypto/peerOrganizations/org2.co.com/peers/peer0.org2.co.com/tls/ca.crt"
+      },
+      "url": "grpcs://10.239.54.36:8051"
+    }
+  },
+  "orderers": {
+    "orderer.example.com": {
+      "tlsCACerts": {
+        "path": "/tmp/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/tls/ca.crt"
+      },
+      "url": "grpcs://orderer.example.com:7050"
+    }
+  }
+}
