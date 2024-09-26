@@ -9,5 +9,10 @@
       "profile": "./connection-profile/co-network.json"
     }
   },
+  "ssl": {
+    "enabled": true,
+    "cert": "/opt/explorer/app/ssl-certs/explorer.crt",
+    "key": "/opt/explorer/app/ssl-certs/explorer.key"
+  },
   "license": "Apache-2.0"
 }
