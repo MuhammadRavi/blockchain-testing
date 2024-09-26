@@ -3,9 +3,9 @@
 # Define variables
 CHAINCODE_NAME="chaincodes"
 CHANNEL_NAME="dochannel"
-VERSION="2"
-SEQUENCE="2"
-PACKAGE_ID="chaincodesv2:df404c9c9c7a24b3178861b1465c67f161643b20de15e32c366b8e4d041c7810"
+VERSION="1"
+SEQUENCE="1"
+PACKAGE_ID="chaincodesv1:eaf28f1364bbe18784c4f585136529ff82e26d2a0e63207bbd46c0a53a0c082f"
 ORDERER_CA="/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem"
 
 # Approve Chaincode on LNSW Host
