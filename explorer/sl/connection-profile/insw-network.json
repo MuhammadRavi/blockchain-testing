@@ -42,7 +42,7 @@
       "tlsCACerts": {
         "path": "/tmp/crypto/peerOrganizations/org3.sl.com/peers/peer0.org3.sl.com/tls/ca.crt"
       },
-      "url": "grpcs://peer0.org3.sl.com:9051"
+      "url": "grpcs://10.239.54.38:9051"
     }
   }
 }
