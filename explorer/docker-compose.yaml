@@ -22,11 +22,6 @@ services:
       - POSTGRESQL_SSL_ENABLED=true # Add this line
       - POSTGRESQL_SSL_KEY=/var/lib/postgresql/server.key # Add this line
       - POSTGRESQL_SSL_CERT=/var/lib/postgresql/server.crt # Add this line
-    healthcheck:
-      test: "pg_isready -h localhost -p 5432 -q -U postgres"
-      interval: 30s
-      timeout: 10s
-      retries: 5
     volumes:
       - pgdata:/var/lib/postgresql/data
       - ./ssl-certs/server.key:/var/lib/postgresql/server.key # Add this line
@@ -52,7 +47,7 @@ services:
       - LOG_LEVEL_CONSOLE=debug
       - LOG_CONSOLE_STDOUT=true
       - DISCOVERY_AS_LOCALHOST=false
-      - SSL_ENABLED=true  # Add this line
+      - SSL_ENABLED=true # Add this line
     volumes:
       - ./config.json:/opt/explorer/app/platform/fabric/config.json
       - ./connection-profile:/opt/explorer/app/platform/fabric/connection-profile
@@ -62,7 +57,7 @@ services:
     ports:
       - 8080:8080
     depends_on:
-      explorerdb.example.com:
-        condition: service_healthy
+      - explorerdb.example.com
     networks:
       - insw-network
+    command: sh -c "cd /opt/explorer && node main.js && tail -f /dev/null" # Modified command
