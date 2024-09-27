@@ -49,7 +49,7 @@ services:
       - ../../crypto-config:/tmp/crypto
       - walletstore:/opt/explorer/wallet
     ports:
-      - 8086:8080
+      - 8086:8086
     depends_on:
       explorerdb.example.com:
         condition: service_healthy

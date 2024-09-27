@@ -22,6 +22,15 @@
     "dochannel": {
       "peers": {
         "peer0.org1.lnsw.com": {}
+      },
+      "connection": {
+        "timeout": {
+          "peer": {
+            "endorser": "6000",
+            "eventHub": "6000",
+            "eventReg": "6000"
+          }
+        }
       }
     }
   },
@@ -42,7 +51,7 @@
       "tlsCACerts": {
         "path": "/tmp/crypto/peerOrganizations/org1.lnsw.com/peers/peer0.org1.lnsw.com/tls/ca.crt"
       },
-      "url": "grpcs://peer0.org1.lnsw.com:7051"
+      "url": "grpcs://10.239.54.32:7051"
     }
   }
 }
