@@ -46,7 +46,7 @@ services:
       - ./connection-profile:/opt/explorer/app/platform/fabric/connection-profile
       - ../../../crypto-config:/tmp/crypto
       - walletstore:/opt/explorer/wallet
-    command: sh -c "sleep 16 && node /opt/explorer/main.js && tail -f /dev/null"
+    command: sh -c "sleep 16 && node /opt/explorer/main.ts && tail -f /dev/null"
     ports:
       - 8086:8080
     networks:
