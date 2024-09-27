@@ -44,13 +44,5 @@
       },
       "url": "grpcs://peer0.org1.lnsw.com:7051"
     }
-  },
-  "orderers": {
-    "orderer.example.com": {
-      "tlsCACerts": {
-        "path": "/tmp/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/tls/ca.crt"
-      },
-      "url": "grpcs://orderer.example.com:7050"
-    }
   }
 }
