@@ -1,9 +1,0 @@
-{
-    "network-configs": {
-        "insw-network": {
-            "name": "Shipping Line",
-            "profile": "./connection-profile/insw-network.json"
-        }
-    },
-    "license": "Apache-2.0"
-}
