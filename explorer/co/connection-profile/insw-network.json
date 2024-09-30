@@ -3,10 +3,6 @@
   "version": "1.0.0",
   "client": {
     "tlsEnable": true,
-    "adminCredential": {
-      "id": "adminco",
-      "password": "$4dm1nc0#"
-    },
     "enableAuthentication": false,
     "organization": "Org2MSP",
     "connection": {
