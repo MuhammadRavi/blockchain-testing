@@ -1,6 +1,6 @@
 {
   "network-configs": {
-    "explorer-co": {
+    "insw-network": {
       "name": "Cargo Owner",
       "profile": "./connection-profile/insw-network.json"
     }
