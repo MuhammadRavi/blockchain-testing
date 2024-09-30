@@ -3,11 +3,11 @@ version: "2.1"
 
 volumes:
   pgdata:
-    blockchain-insw_pgdata:
-      external: true
+    external:
+      name: blockchain-insw_pgdata
   walletstore:
-    blockchain-insw_walletstore:
-      external: true
+    external:
+      name: blockchain-insw_walletstore
 
 networks:
   insw-network:
