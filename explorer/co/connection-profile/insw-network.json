@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "client": {
     "tlsEnable": true,
+    "adminCredential": {
+      "id": "adminco",
+      "password": "$4dm1nc0#"
+    },
     "enableAuthentication": false,
     "organization": "Org2MSP",
     "connection": {
@@ -38,7 +42,7 @@
       "tlsCACerts": {
         "path": "/tmp/crypto/peerOrganizations/org2.co.com/peers/peer0.org2.co.com/tls/ca.crt"
       },
-      "url": "grpcs://peer0.org2.co.com:8051"
+      "url": "grpcs://10.239.54.36:8051"
     }
   }
 }

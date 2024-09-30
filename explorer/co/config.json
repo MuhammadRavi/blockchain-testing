@@ -1,9 +1,16 @@
 {
-    "network-configs": {
-        "insw-network": {
-            "name": "Cargo Owner",
-            "profile": "./connection-profile/insw-network.json"
-        }
+  "network-configs": {
+    "insw-network": {
+      "name": "Cargo Owner",
+      "profile": "./connection-profile/insw-network.json"
     },
-    "license": "Apache-2.0"
+    "postgresql": {
+      "host": "explorerdb.example.com",
+      "port": "5432",
+      "database": "fabricexplorer",
+      "username": "hppoc",
+      "passwd": "password"
+    }
+  },
+  "license": "Apache-2.0"
 }
