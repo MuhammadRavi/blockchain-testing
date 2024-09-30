@@ -2,7 +2,7 @@
   "network-configs": {
     "explorer-co": {
       "name": "Cargo Owner",
-      "profile": "./connection-profile/explorer-co.json"
+      "profile": "./connection-profile/insw-network.json"
     }
   },
   "license": "Apache-2.0"
