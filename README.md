@@ -6,13 +6,14 @@ Source : https://medium.com/@kctheservant/multi-host-deployment-for-first-networ
 ### Prerequisites
 #### Open several ports for docker swarm:
 ##### login as admin sudo
-##### Open ports using ufw
-`ufw allow 22/tcp
-ufw allow 2376/tcp
-ufw allow 7946/tcp 
-ufw allow 7946/udp 
-ufw allow 4789/udp
-ufw allow 3000`
+##### Open ports using ufw  
+```bash
+ufw allow 22/tcp  
+ufw allow 2376/tcp  
+ufw allow 7946/tcp  
+ufw allow 7946/udp  
+ufw allow 4789/udp  
+ufw allow 3000  
 ##### Reload ufw
 ufw reload
 ##### if ufw is disabled, enable it
