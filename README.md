@@ -81,13 +81,14 @@ cd ../..
 ### Check images for each host
 `docker images dev-*`
 > dev-peer0.org1.lnsw.com-chaincodesv1-972c402c00d2ce67d0c88d883167548c52741db28a5199f629c067ba0101e562-195c83bb25dddb991bf6c798d202eda49e7c625729049781bb8d3b51f1985879   latest    9a82d089fcf4   8 minutes ago   385MB
+
 > Note: using 972c402c00d2ce67d0c88d883167548c52741db28a5199f629c067ba0101e562 as ID for approve chaincodes and chaincodesv1 as name. don't forget to update chaincodesapprove.sh
 
 ### Approve chaincodes of all hosts
 `./chaincode-approve.sh`
 
 ### Check approval status
-docker exec cli peer lifecycle chaincode checkcommitreadiness --channelID dochannel --name chaincodes --version 1 --sequence 1
+`docker exec cli peer lifecycle chaincode checkcommitreadiness --channelID dochannel --name chaincodes --version 1 --sequence 1`
 
 ### Commit Chaincode
 `./chaincode-commit.sh`
