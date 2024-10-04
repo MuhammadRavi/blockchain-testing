@@ -13,7 +13,8 @@ ufw allow 2376/tcp
 ufw allow 7946/tcp  
 ufw allow 7946/udp  
 ufw allow 4789/udp  
-ufw allow 3000  
+ufw allow 3000
+```  
 ##### Reload ufw
 ufw reload
 ##### if ufw is disabled, enable it
