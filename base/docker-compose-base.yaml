@@ -30,12 +30,12 @@ services:
       service: peer-base
     environment:
       - CORE_PEER_ID=peer0.org1.lnsw.com
-      - CORE_PEER_ADDRESS=10.239.54.32:7051
+      - CORE_PEER_ADDRESS=10.216.74.134:7051
       - CORE_PEER_LISTENADDRESS=0.0.0.0:7051
       - CORE_PEER_CHAINCODEADDRESS=peer0.org1.lnsw.com:7052
       - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:7052
-      - CORE_PEER_GOSSIP_BOOTSTRAP=10.239.54.36:8051 10.239.54.38:9051 10.239.54.39:10051 10.239.54.33:11051 10.239.54.23:12051
-      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=10.239.54.32:7051
+      - CORE_PEER_GOSSIP_BOOTSTRAP=10.216.74.133:8051 
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=10.216.74.134:7051
       - CORE_PEER_LOCALMSPID=Org1MSP
     volumes:
       - /var/run/:/host/var/run/
@@ -52,12 +52,12 @@ services:
       service: peer-base
     environment:
       - CORE_PEER_ID=peer0.org2.co.com
-      - CORE_PEER_ADDRESS=10.239.54.36:8051
+      - CORE_PEER_ADDRESS=10.216.74.133:8051
       - CORE_PEER_LISTENADDRESS=0.0.0.0:8051
       - CORE_PEER_CHAINCODEADDRESS=peer0.org2.co.com:8052
       - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:8052
-      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=10.239.54.36:8051
-      - CORE_PEER_GOSSIP_BOOTSTRAP=10.239.54.32:7051 10.239.54.38:9051 10.239.54.39:10051 10.239.54.33:11051 10.239.54.23:12051
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=10.216.74.134:7051
+      - CORE_PEER_GOSSIP_BOOTSTRAP=10.216.74.133:8051
       - CORE_PEER_LOCALMSPID=Org2MSP
     volumes:
       - /var/run/:/host/var/run/
@@ -66,91 +66,3 @@ services:
       - peer0.org2.co.com:/var/hyperledger/production
     ports:
       - 8051:8051
-
-  peer0.org3.sl.com:
-    container_name: peer0.org3.sl.com
-    extends:
-      file: peer-base.yaml
-      service: peer-base
-    environment:
-      - CORE_PEER_ID=peer0.org3.sl.com
-      - CORE_PEER_ADDRESS=10.239.54.38:9051
-      - CORE_PEER_LISTENADDRESS=0.0.0.0:9051
-      - CORE_PEER_CHAINCODEADDRESS=peer0.org3.sl.com:9052
-      - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:9052
-      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=10.239.54.38:9051
-      - CORE_PEER_GOSSIP_BOOTSTRAP=10.239.54.32:7051 10.239.54.36:8051 10.239.54.39:10051 10.239.54.33:11051 10.239.54.23:12051
-      - CORE_PEER_LOCALMSPID=Org3MSP
-    volumes:
-      - /var/run/:/host/var/run/
-      - ../crypto-config/peerOrganizations/org3.sl.com/peers/peer0.org3.sl.com/msp:/etc/hyperledger/fabric/msp
-      - ../crypto-config/peerOrganizations/org3.sl.com/peers/peer0.org3.sl.com/tls:/etc/hyperledger/fabric/tls
-      - peer0.org3.sl.com:/var/hyperledger/production
-    ports:
-      - 9051:9051
-
-  peer0.org4.to.com:
-    container_name: peer0.org4.to.com
-    extends:
-      file: peer-base.yaml
-      service: peer-base
-    environment:
-      - CORE_PEER_ID=peer0.org4.to.com
-      - CORE_PEER_ADDRESS=10.239.54.39:10051
-      - CORE_PEER_LISTENADDRESS=0.0.0.0:10051
-      - CORE_PEER_CHAINCODEADDRESS=peer0.org4.to.com:10052
-      - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:10052
-      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=10.239.54.39:10051
-      - CORE_PEER_GOSSIP_BOOTSTRAP=10.239.54.32:7051 10.239.54.36:8051 10.239.54.38:9051 10.239.54.33:11051 10.239.54.23:12051
-      - CORE_PEER_LOCALMSPID=Org4MSP
-    volumes:
-      - /var/run/:/host/var/run/
-      - ../crypto-config/peerOrganizations/org4.to.com/peers/peer0.org4.to.com/msp:/etc/hyperledger/fabric/msp
-      - ../crypto-config/peerOrganizations/org4.to.com/peers/peer0.org4.to.com/tls:/etc/hyperledger/fabric/tls
-      - peer0.org4.to.com:/var/hyperledger/production
-    ports:
-      - 10051:10051
-
-  peer0.org5.inaport.com:
-    container_name: peer0.org5.inaport.com
-    extends:
-      file: peer-base.yaml
-      service: peer-base
-    environment:
-      - CORE_PEER_ID=peer0.org5.inaport.com
-      - CORE_PEER_ADDRESS=10.239.54.33:11051
-      - CORE_PEER_LISTENADDRESS=0.0.0.0:11051
-      - CORE_PEER_CHAINCODEADDRESS=peer0.org5.inaport.com:11052
-      - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:11052
-      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=10.239.54.33:11051
-      - CORE_PEER_GOSSIP_BOOTSTRAP=10.239.54.32:7051 10.239.54.36:8051 10.239.54.38:9051 10.239.54.39:10051 10.239.54.23:12051
-      - CORE_PEER_LOCALMSPID=Org5MSP
-    volumes:
-      - /var/run/:/host/var/run/
-      - ../crypto-config/peerOrganizations/org5.inaport.com/peers/peer0.org5.inaport.com/msp:/etc/hyperledger/fabric/msp
-      - ../crypto-config/peerOrganizations/org5.inaport.com/peers/peer0.org5.inaport.com/tls:/etc/hyperledger/fabric/tls
-      - peer0.org5.inaport.com:/var/hyperledger/production
-    ports:
-      - 11051:11051
-
-  peer0.org6.bank.com:
-    container_name: peer0.org6.bank.com
-    extends:
-      file: peer-base.yaml
-      service: peer-base
-    environment:
-      - CORE_PEER_ID=peer0.org6.bank.com
-      - CORE_PEER_ADDRESS=10.239.54.23:12051
-      - CORE_PEER_LISTENADDRESS=0.0.0.0:12051
-      - CORE_PEER_CHAINCODEADDRESS=peer0.org6.bank.com:12052
-      - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:12052
-      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=10.239.54.23:12051
-      - CORE_PEER_GOSSIP_BOOTSTRAP=10.239.54.32:7051 10.239.54.36:8051 10.239.54.38:9051 10.239.54.39:10051 10.239.54.33:11051
-      - CORE_PEER_LOCALMSPID=Org6MSP
-    volumes:
-      - /var/run/:/host/var/run/
-      - ../crypto-config/peerOrganizations/org6.bank.com/peers/peer0.org6.bank.com/msp:/etc/hyperledger/fabric/msp
-      - ../crypto-config/peerOrganizations/org6.bank.com/peers/peer0.org6.bank.com/tls:/etc/hyperledger/fabric/tls
-      - peer0.org6.bank.com:/var/hyperledger/production
-    ports:
-      - 12051:12051

@@ -57,7 +57,7 @@ Organizations:
         Type: Signature
         Rule: "OR('Org1MSP.member')"
     AnchorPeers:
-      - Host: 10.239.54.32
+      - Host: 10.216.74.134
         Port: 7051
 
   - &Org2
@@ -78,92 +78,8 @@ Organizations:
         Type: Signature
         Rule: "OR('Org2MSP.member')"
     AnchorPeers:
-      - Host: 10.239.54.36
+      - Host: 10.216.74.133
         Port: 8051
-
-  - &Org3
-    Name: Org3MSP
-    ID: Org3MSP
-    MSPDir: crypto-config/peerOrganizations/org3.sl.com/msp
-    Policies:
-      Readers:
-        Type: Signature
-        Rule: "OR('Org3MSP.member')"
-      Writers:
-        Type: Signature
-        Rule: "OR('Org3MSP.member')"
-      Admins:
-        Type: Signature
-        Rule: "OR('Org3MSP.admin')"
-      Endorsement:
-        Type: Signature
-        Rule: "OR('Org3MSP.member')"
-    AnchorPeers:
-      - Host: 10.239.54.38
-        Port: 9051
-
-  - &Org4
-    Name: Org4MSP
-    ID: Org4MSP
-    MSPDir: crypto-config/peerOrganizations/org4.to.com/msp
-    Policies:
-      Readers:
-        Type: Signature
-        Rule: "OR('Org4MSP.member')"
-      Writers:
-        Type: Signature
-        Rule: "OR('Org4MSP.member')"
-      Admins:
-        Type: Signature
-        Rule: "OR('Org4MSP.admin')"
-      Endorsement:
-        Type: Signature
-        Rule: "OR('Org4MSP.member')"
-    AnchorPeers:
-      - Host: 10.239.54.39
-        Port: 10051
-
-  - &Org5
-    Name: Org5MSP
-    ID: Org5MSP
-    MSPDir: crypto-config/peerOrganizations/org5.inaport.com/msp
-    Policies:
-      Readers:
-        Type: Signature
-        Rule: "OR('Org5MSP.member')"
-      Writers:
-        Type: Signature
-        Rule: "OR('Org5MSP.member')"
-      Admins:
-        Type: Signature
-        Rule: "OR('Org5MSP.admin')"
-      Endorsement:
-        Type: Signature
-        Rule: "OR('Org5MSP.member')"
-    AnchorPeers:
-      - Host: 10.239.54.33
-        Port: 11051
-
-  - &Org6
-    Name: Org6MSP
-    ID: Org6MSP
-    MSPDir: crypto-config/peerOrganizations/org6.bank.com/msp
-    Policies:
-      Readers:
-        Type: Signature
-        Rule: "OR('Org6MSP.member')"
-      Writers:
-        Type: Signature
-        Rule: "OR('Org6MSP.member')"
-      Admins:
-        Type: Signature
-        Rule: "OR('Org6MSP.admin')"
-      Endorsement:
-        Type: Signature
-        Rule: "OR('Org6MSP.member')"
-    AnchorPeers:
-      - Host: 10.239.54.23
-        Port: 12051
 
 Application: &ApplicationDefaults
   Organizations:
@@ -186,7 +102,7 @@ Application: &ApplicationDefaults
 Orderer: &OrdererDefaults
   OrdererType: solo
   Addresses:
-    - 10.239.54.32:7050
+    - 10.216.74.134:7050
   BatchTimeout: 2s
   BatchSize:
     MaxMessageCount: 10
@@ -221,10 +137,6 @@ Profiles:
         Organizations:
           - *Org1
           - *Org2
-          - *Org3
-          - *Org4
-          - *Org5
-          - *Org6
 
   ChannelProfile:
     <<: *ChannelDefaults
@@ -234,7 +146,3 @@ Profiles:
       Organizations:
         - *Org1
         - *Org2
-        - *Org3
-        - *Org4
-        - *Org5
-        - *Org6
