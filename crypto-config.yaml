@@ -5,7 +5,7 @@ OrdererOrgs:
       - Hostname: orderer
         SANS:
           - orderer.example.com       # DNS
-          - 10.216.74.134              # IP Address
+          - 10.216.74.149              # IP Address
 
 PeerOrgs:
   - Name: Org1
@@ -19,7 +19,7 @@ PeerOrgs:
       - Hostname: peer0
         SANS:
           - peer0.org1.lnsw.com   # DNS
-          - 10.216.74.134          # IP Address
+          - 10.216.74.149          # IP Address
   - Name: Org2
     Domain: org2.co.com
     EnableNodeOUs: true
@@ -31,4 +31,4 @@ PeerOrgs:
       - Hostname: peer0
         SANS:
           - peer0.org2.co.com   # DNS
-          - 10.216.74.133          # IP Address
+          - 10.216.74.147          # IP Address

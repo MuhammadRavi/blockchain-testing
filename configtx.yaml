@@ -57,7 +57,7 @@ Organizations:
         Type: Signature
         Rule: "OR('Org1MSP.member')"
     AnchorPeers:
-      - Host: 10.216.74.134
+      - Host: 10.216.74.149
         Port: 7051
 
   - &Org2
@@ -78,7 +78,7 @@ Organizations:
         Type: Signature
         Rule: "OR('Org2MSP.member')"
     AnchorPeers:
-      - Host: 10.216.74.133
+      - Host: 10.216.74.148
         Port: 8051
 
 Application: &ApplicationDefaults
@@ -102,7 +102,7 @@ Application: &ApplicationDefaults
 Orderer: &OrdererDefaults
   OrdererType: solo
   Addresses:
-    - 10.216.74.134:7050
+    - 10.216.74.149:7050
   BatchTimeout: 2s
   BatchSize:
     MaxMessageCount: 10
